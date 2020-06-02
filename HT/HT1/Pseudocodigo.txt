@@ -1,0 +1,16 @@
+------------------Pseudocodigo------------------
+Inicio 
+1. Ingresar al Portal
+2. Ingresar a Asignaciones
+3. Asignarse a Sección A
+4. Verificar si la Sección A esta vacia.
+	4.1 Si Sección A = 15 ir a paso 4.2 
+	    sino
+	    quedar asignado a la Sección A.
+	4.2 Si Sección B = 15 ir a paso 5
+	    sino
+	    quedar asignado a la Sección B.
+5. Solicitar que se abra otra sección.
+Fin
+------------------------------------------------
+
