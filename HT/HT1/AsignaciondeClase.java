@@ -11,7 +11,7 @@ public class AsignaciondeClase {
         public static String nombre;
         public static int carne,opc;
         public static Scanner leer = new Scanner(System.in);
-        public static int numero = (int)(Math.random()*15+1);
+        public static int numero = (int)(Math.random()*5+1);
    public static void main(String[]args){
    asignacion();
    }
@@ -40,18 +40,21 @@ public class AsignaciondeClase {
     }
     
     public static void seccionA(){
-    if (numero == 15) {
+        System.out.println("Cupo numero "+numero);
+    if (numero == 5) {
             System.out.println("La seccion A esta llena, favor de pasar a siguiente seccion");
-            menu();
+            
         }else{
             System.out.println("Asignad@");
         }
     }
     
     public static void seccionB(){
-    if (numero == 15) {
+    
+        System.out.println("Cupo numero "+numero);
+        if (numero == 5) {
             System.out.println("La seccion B esta llena, favor de ir a otra seccion");
-            menu();
+            
         }else{
             System.out.println("Asignad@");
         }
