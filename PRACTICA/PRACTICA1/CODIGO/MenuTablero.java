@@ -3,15 +3,20 @@ package Org.EduardoAgustin.Menu;
 import java.util.Scanner;
 
 public class MenuTablero {
-    public int opc;
+    public int opc,entrada,intentos,auintento,res;
     public boolean status ;
     String Tablero[][];
     public Scanner readoption = new Scanner(System.in);
     public String coordenada;
     public int Xo, Yo, Xf, Yf;
+    
+    
     public MenuTablero() {
         this.opc = 0;
         Tablero = new String[10][10];
+        this.entrada=0;
+        this.intentos =10;
+        this.auintento=0;
     }
     
     public void MTablero(){
@@ -34,6 +39,12 @@ public class MenuTablero {
             case 3:
                 break;
             case 4:
+                for (int i = 0; i < Tablero.length; i++) {
+                    for (int j = 0; j < Tablero.length; j++) {
+                        System.out.print("["+Tablero[i][j]+"]");
+                    }
+                        System.out.println("");
+                }
                 break;
             case 5:
                 break;
@@ -43,8 +54,7 @@ public class MenuTablero {
             }
         }while(!status);
     }
-    
-    
+   
    public void IniciarTablero(){
        for (int i = 0; i < Tablero.length; i++) {
            for (int j = 0; j < Tablero.length; j++) {
@@ -60,8 +70,7 @@ public class MenuTablero {
    
    public void MenuAviones(){
        for (int a = 0; a < 5; a++) {
-           
-           System.out.println("Que barco deseas ingresar?");
+       System.out.println("Que barco deseas ingresar?");
        System.out.println("1. Portaaviones");
        System.out.println("2. Submarino");
        System.out.println("3. Destructur");
@@ -70,10 +79,16 @@ public class MenuTablero {
        opc = readoption.nextInt();
        switch(opc){
            case 1:
-               System.out.println("Ingresa tu coordenada del Portavion" );
+               if (entrada < 1) {
+                System.out.println("Ingresa tu coordenada del Portavion" );
                coordenada = readoption.next();
                SplitPosicion(coordenada);
-               break;
+               entrada++;
+               }else if(entrada >=1){
+                   System.out.println("Ya ingresaste un portaviones");
+               }
+              break;
+               
            case 2:
                for (int n = 0; n < 3; n++) {
                    System.out.println("Ingresa tus coordenadas del Submarino "+(n+1));
@@ -87,7 +102,6 @@ public class MenuTablero {
                    coordenada = readoption.next();
                    SplitPosicion(coordenada);
                }
-               
                break;
            case 4:
                for (int n = 0; n < 1; n++) {
@@ -95,7 +109,6 @@ public class MenuTablero {
                    coordenada = readoption.next();
                    SplitPosicion(coordenada);
                }
-               
                break;
            case 5:
                    System.out.println("Ingresa tus coordenadas");
@@ -137,14 +150,14 @@ public class MenuTablero {
        if (Xo == Xf) {
            for (int i = Xo; i < Xf+1; i++) {
                for (int j = Yo; j <=Yf; j++) {
-                   Tablero[i][j]="@";
+                   Tablero[i][j]="0";
                }
                System.out.println("");
            }
        }else if (Yo == Yf) {
            for (int i = Xo; i <=Xf; i++) {
                for (int j = Yo; j < Yf+1; j++) {
-                   Tablero[i][j]="@";
+                   Tablero[i][j]="0";
                }
                System.out.println("");
            }
@@ -158,12 +171,19 @@ public class MenuTablero {
            System.out.println("");
        }
         System.out.println("");
-       
+        
    }
-
    
    public void Regreso(){
        MenuP principal = new MenuP();
        principal.IniciarMenu();
    }
+
+   public void AumentarIntentos(){
+   }
+   
+   public void Jugar(){
+       
+   }
 }
+

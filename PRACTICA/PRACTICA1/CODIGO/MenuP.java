@@ -7,9 +7,11 @@ public class MenuP {
     public int opc;
     public boolean status ;
     public Scanner read = new Scanner(System.in);
+    public String[] nickname;
     public MenuP() {
         this.status = false;
         this.opc =0;
+        this.nickname = new String[5];
     }
     
     public void IniciarMenu(){
@@ -54,5 +56,15 @@ public class MenuP {
         System.out.println("Gracias por Jugar");
         System.exit(0);
     }
+
+    public String[] getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String[] nickname) {
+        this.nickname = nickname;
+    }
+    
+    
     
 }
