@@ -1,16 +1,19 @@
 package Org.EduardoAgustin.Menu;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class MenuTablero {
     public int opc,entrada,intentos,auintento,res,opcjuego;
     public boolean status ;
-    String Tablero[][];
+    public String Tablero[][];
     public Scanner readoption = new Scanner(System.in);
     public Scanner juego;
     public String coordenada;
-    public int Xo, Yo, Xf, Yf;
+    public int Xo, Yo, Xf, Yf,hora,minutos,segundos,fecha;
     public String nickname;
+    public int sub,des,frag,eeg;
+    public Calendar calendario;
     
     
     public MenuTablero() {
@@ -19,6 +22,12 @@ public class MenuTablero {
         this.entrada=0;
         this.juego = new Scanner(System.in);
         this.intentos =10;
+        calendario = Calendar.getInstance();
+        this.fecha = calendario.get(Calendar.DATE);
+        this.hora = calendario.get(Calendar.HOUR_OF_DAY);
+        this.minutos = calendario.get(Calendar.MINUTE);
+        this.segundos = calendario.get(Calendar.SECOND);
+        
     }
     
     public void MTablero(){
@@ -82,7 +91,7 @@ public class MenuTablero {
    }
    
    public void MenuBarcos(){
-       for (int a = 0; a < 5; a++) {
+       for (int a = 0; a <=6; a++) {
        System.out.println("Que barco deseas ingresar?");
        System.out.println("1. Portaaviones");
        System.out.println("2. Submarino");
@@ -95,7 +104,7 @@ public class MenuTablero {
                if (entrada < 1) {
                 System.out.println("Ingresa tu coordenada del Portavion" );
                coordenada = readoption.next();
-               SplitPosicion(coordenada);
+                   SplitPosicion(coordenada);
                entrada++;
                }else if(entrada >=1){
                    System.out.println("Ya ingresaste un portaviones");
@@ -103,30 +112,50 @@ public class MenuTablero {
               break;
                
            case 2:
-               for (int n = 0; n < 3; n++) {
+               if (sub<1) {
+                   for (int n = 0; n < 3; n++) {
                    System.out.println("Ingresa tus coordenadas del Submarino "+(n+1));
                    coordenada = readoption.next();
                    SplitPosicion(coordenada);
+                   sub++;
                }
+               }else if(sub>=1){
+                   System.out.println("Ya ingresaste los 3 submarinos");
+                }
                break;
            case 3:
-               for (int n = 0; n < 3; n++) {
-                   System.out.println("Ingresa tus coordenadas del Destructor"+(n+1));
+               if (des <1) {
+                   for (int n = 0; n < 3; n++) {
+                   System.out.println("Ingresa tus coordenadas del Destructor "+(n+1));
                    coordenada = readoption.next();
                    SplitPosicion(coordenada);
+                   des++;
+               }
+               }else{
+                   System.out.println("Ya has ingresado lso 3 Destructores");
                }
                break;
            case 4:
-               for (int n = 0; n < 1; n++) {
-                   System.out.println("Ingresa tus coordenadas de las Fragatas"+(n+1));
+               if (frag<1) {
+                   for (int n = 0; n < 2; n++) {
+                   System.out.println("Ingresa tus coordenadas de las Fragatas "+(n+1));
                    coordenada = readoption.next();
                    SplitPosicion(coordenada);
+                   frag++;
+               }
+               }else{
+                   System.out.println("Ya has ingrsado las 2 Fragatas");
                }
                break;
            case 5:
-                   System.out.println("Ingresa tus coordenadas");
+                   if (eeg<1) {
+                   System.out.println("Ingresa tus coordenadas del  EASTER EGG");
                    coordenada = readoption.next();
                    SplitEasterEgg(coordenada);
+                   eeg++;
+               }else{
+                       System.out.println("Ya ingresaste el  EASTER EGG");
+                   }
                break;
                 default: 
                System.out.println("Opcion incorrecta");
@@ -177,14 +206,15 @@ public class MenuTablero {
        }else{
            System.out.println("Ingrese Coordenadas Validas");
        }
-        for (int i = 0; i < Tablero.length; i++) {
+       
+
+           for (int i = 0; i < Tablero.length; i++) {
            for (int j = 0; j < Tablero.length; j++) {
                System.out.print("["+Tablero[i][j]+"]");
            }
            System.out.println("");
        }
         System.out.println("");
-        
    }
    
    public void ingresarEasterEgg(){
@@ -259,8 +289,7 @@ public class MenuTablero {
        }
        
    }
-   
-   
+      
    public void Jugar(){
        
        System.out.println("Ingresa tu nickname");
@@ -269,11 +298,14 @@ public class MenuTablero {
        System.out.println("\nComenzamos");
        
        do{
-       System.out.println("Hora: ");
+       System.out.println("Hora: "+hora+":"+minutos+":"+segundos);
+           System.out.println("Fecha: "+fecha);
        System.out.println("Barcos: ");
+                System.out.println("/9");
+                System.out.println("");
        System.out.println("Intentos: ");
                 System.out.println(res+"/10 Realizados");
-                System.out.println(intentos+"/10 Restantes");
+                System.out.println(intentos+"/10Restantes");
                 
              for (int i = 0; i < Tablero.length; i++) {
                     for (int j = 0; j < Tablero.length; j++) {
@@ -304,7 +336,6 @@ public class MenuTablero {
              
              }while(intentos != 0);
    }
-       
    
    public void Disparar(){
        if (Xo == Xf) {
