@@ -17,10 +17,9 @@ _Para esta aplicacion fueron requeridas 3 clases, la primera llamada Menu Inicio
 ### Métodos Utilizados
 _1. Menú 1_
 
-
+![MetodoMenu1,](https://user-images.githubusercontent.com/66287100/83987949-0a3b3280-a8ff-11ea-9fbb-1291d483aecb.png)
 
 _2. Constructor Tablero_
-//SS construcotr tablero
 
 _3. Iniciar Tablero_
 //ss iniciar Tablero
