@@ -21,32 +21,48 @@ _1. Menú 1_
 
 _2. Constructor Tablero_
 
+![MetodoConstructorTablero](https://user-images.githubusercontent.com/66287100/83988030-466e9300-a8ff-11ea-9d7b-865848efc036.jpg)
+
 _3. Iniciar Tablero_
-//ss iniciar Tablero
+
+![MetodoInicioTablero](https://user-images.githubusercontent.com/66287100/83988314-1ecbfa80-a900-11ea-95f0-78cd48e3de3d.jpg)
 
 _4. Menú Tablero_
-//ss MenuTablero
+
+![MetodoMenuTablero](https://user-images.githubusercontent.com/66287100/83988363-3acf9c00-a900-11ea-838b-3bba8ed3451c.png)
+
+![MetodoMenuTablero2](https://user-images.githubusercontent.com/66287100/83988367-3f945000-a900-11ea-86b2-38967ba7881d.jpg)
+
 
 _5. Menu Barcos_
-//ss MenuBarco
+
+![MetodoMenuBarcos](https://user-images.githubusercontent.com/66287100/83988402-576bd400-a900-11ea-8b58-02b2cf51cb59.jpg)
 
 _6. Split de Coordenadas_
-//ss Split
+
+![MetodoSplit](https://user-images.githubusercontent.com/66287100/83988442-71a5b200-a900-11ea-8aaa-c9b6dbacb3e1.jpg)
 
 _7. Ingresar Coordenadas_
-//Ss ingresarCoordenadas
+
+![MetodoIngresarCoordenadas](https://user-images.githubusercontent.com/66287100/83988469-884c0900-a900-11ea-8cc3-f316a8cf1211.jpg)
 
 _8. Ingresar Easter Egg_
-// metodo Easter
+
+![MetodoEaster](https://user-images.githubusercontent.com/66287100/83988497-a1ed5080-a900-11ea-9a99-c562642179f0.jpg)
 
 _9. Jugar_
-// Jugar 1 y2 
+
+![MetodoJugar](https://user-images.githubusercontent.com/66287100/83988508-af0a3f80-a900-11ea-9b1d-ba607b9cccb9.jpg)
+
+![MetodoJugar2](https://user-images.githubusercontent.com/66287100/83988511-b03b6c80-a900-11ea-98ef-0e7195b77f02.jpg)
 
 _10. Split Disparo_
-//metodoSplitdisparo
+
+![MetodoSplitDisparo](https://user-images.githubusercontent.com/66287100/83988564-d95bfd00-a900-11ea-9ecf-aead8a5e3279.jpg)
 
 _11. Disparar_
-//Disparar
+
+![MetodoDisparar](https://user-images.githubusercontent.com/66287100/83988581-ea0c7300-a900-11ea-8afa-4ad68f531315.png)
 
 ### Resolución de Problema
 _Para el siguiente problema, en si la logica se aplico a la hora de ingresar las coordenadas de cada uno de los barcos y asi mismo a la hora de disparar. Los que se aplico aquí es el uso de los vectores los cuales nos ayudarian a almacenar el nombre de los jugadores, la puntuacion y los intentos que se harían, así mismo se utilizo un arreglo bidimensional para crear el tablero el cual se iria llenando con los barcos. 
