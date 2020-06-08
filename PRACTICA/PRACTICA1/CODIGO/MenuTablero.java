@@ -190,9 +190,7 @@ public class MenuTablero {
    }
    
    public void IngresodeCoordenadas(){
-           System.out.println("Regresa");
-
-           if (Xo == Xf) {
+            if (Xo == Xf) {
            for (int i = Xo; i < Xf+1; i++) {
                for (int j = Yo; j <=Yf; j++) {
                    Tablero[i][j]="0";
