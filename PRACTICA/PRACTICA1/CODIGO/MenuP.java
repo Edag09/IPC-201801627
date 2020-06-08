@@ -13,6 +13,7 @@ public class MenuP {
     }
     
     public void IniciarMenu(){
+        
         do{
         System.out.println("Selecciona una opcion por favor");
         System.out.println("--->1. Crear Tablero");
@@ -43,11 +44,11 @@ public class MenuP {
     }
     
     public void ReporteCompleto(){
-    
+        System.out.println("Aqui deberian ir los reportes :(");
     }
     
     public void ReporteVictorias(){
-    
+        System.out.println("Aqui deberian de ir los reportes x2 :(");
     }
     
     public void Salir(){

@@ -14,6 +14,7 @@ public class MenuTablero {
     public String nickname;
     public int sub,des,frag,eeg;
     public Calendar calendario;
+    public int xO,yO,xF,yF;
     
     
     public MenuTablero() {
@@ -189,7 +190,9 @@ public class MenuTablero {
    }
    
    public void IngresodeCoordenadas(){
-       if (Xo == Xf) {
+           System.out.println("Regresa");
+
+           if (Xo == Xf) {
            for (int i = Xo; i < Xf+1; i++) {
                for (int j = Yo; j <=Yf; j++) {
                    Tablero[i][j]="0";
@@ -206,28 +209,27 @@ public class MenuTablero {
        }else{
            System.out.println("Ingrese Coordenadas Validas");
        }
-       
-
-           for (int i = 0; i < Tablero.length; i++) {
+            for (int i = 0; i < Tablero.length; i++) {
            for (int j = 0; j < Tablero.length; j++) {
                System.out.print("["+Tablero[i][j]+"]");
            }
            System.out.println("");
        }
         System.out.println("");
+       
    }
    
    public void ingresarEasterEgg(){
-       if (Xo == Xf) {
-           for (int i = Xo; i < Xf+1; i++) {
-               for (int j = Yo; j <=Yf; j++) {
+       if (xO == xF) {
+           for (int i = xO; i < xF+1; i++) {
+               for (int j = yO; j <=yF; j++) {
                    Tablero[i][j]="$";
                }
                System.out.println("");
            }
-       }else if (Yo == Yf) {
-           for (int i = Xo; i <=Xf; i++) {
-               for (int j = Yo; j < Yf+1; j++) {
+       }else if (yO == yF) {
+           for (int i = xO; i <=xF; i++) {
+               for (int j = yO; j < yF+1; j++) {
                    Tablero[i][j]="$";
                }
                System.out.println("");
@@ -255,13 +257,13 @@ public class MenuTablero {
           if (i == 0) {
                String Valxo = String.valueOf(quitaparentesis.charAt(1));
                String Valyo = String.valueOf(quitaparentesis.charAt(3));
-               Xo = Integer.parseInt(Valxo);
-               Yo = Integer.parseInt(Valyo);
+               xO = Integer.parseInt(Valxo);
+               yO = Integer.parseInt(Valyo);
            }else{
                String vxo = String.valueOf(quitaparentesis.charAt(1));
                String vyo = String.valueOf(quitaparentesis.charAt(3));
-               Xf = Integer.parseInt(vxo);
-               Yf = Integer.parseInt(vyo);
+               xF = Integer.parseInt(vxo);
+               yF = Integer.parseInt(vyo);
            }
         }
        } catch (Exception e) {
@@ -299,10 +301,10 @@ public class MenuTablero {
        
        do{
        System.out.println("Hora: "+hora+":"+minutos+":"+segundos);
-           System.out.println("Fecha: "+fecha);
+           System.out.println("Fecha: "+fecha+"/06/2020");
        System.out.println("Barcos: ");
-                System.out.println("/9");
-                System.out.println("");
+                System.out.println(" /9 Hundidos");
+                System.out.println(" /9 En Accion");
        System.out.println("Intentos: ");
                 System.out.println(res+"/10 Realizados");
                 System.out.println(intentos+"/10Restantes");
@@ -322,6 +324,7 @@ public class MenuTablero {
                      System.out.println("Ingresa las coordenadas del disparo");
                      coordenada = readoption.next();
                      SplitDisparo(coordenada);
+                     NombreEaster();
                      intentos--;
                      res++;
                      break;
@@ -388,5 +391,16 @@ public class MenuTablero {
        }
        Disparar();
    }
+   
+   public boolean NombreEaster(){
+       if (this.Xo == this.xO || this.Xf == this.xF || this.Yo == this.yO || this.Yf == this.yF) {
+           System.out.println("Eduardo Rene Agustin Mendoza, 201801627");
+           return true;
+       }
+   return false;
+   }
+   
 }
+
+
 
