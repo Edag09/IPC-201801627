@@ -166,11 +166,11 @@ public class Seguro extends javax.swing.JFrame {
        Nombre.setText("");
        apellido = Apellido.getText();
        Apellido.setText("");
-       dpi = TxtDPI.getCaretPosition();
+       dpi = Integer.parseInt(TxtDPI.getText());
        TxtDPI.setText("");
-       telefono = TxtTelefono.getCaretPosition();
+       telefono = Integer.parseInt(TxtTelefono.getText());
        TxtTelefono.setText("");
-       valvehiculo = txtVal.getCaretPosition();
+       valvehiculo = Integer.parseInt(txtVal.getText());
        txtVal.setText("");
     }//GEN-LAST:event_jButton4ActionPerformed
 
