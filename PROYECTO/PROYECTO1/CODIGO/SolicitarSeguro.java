@@ -5,6 +5,7 @@
  */
 package Org.EduardoAgustin.Ventanas;
 
+import Org.EduardoAgustin.Clases.ControladorPersonas;
 import Org.EduardoAgustin.Clases.DatosPersonas;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -14,10 +15,10 @@ import javax.swing.JOptionPane;
  * @author Eduardo Agustin
  */
 public class SolicitarSeguro extends javax.swing.JFrame {
-       static DatosPersonas[] persona = new DatosPersonas[10];
-        int telefono,contador=0;
-        long dpi;
-        double costos;
+    ControladorPersonas personita;
+    DatosPersonas solicitar;
+    int telefono;
+    double costos;
 
     
     public SolicitarSeguro() {
@@ -28,6 +29,7 @@ public class SolicitarSeguro extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setLayout(null);
+        this.personita = new ControladorPersonas();
     }
     
     @SuppressWarnings("unchecked")
@@ -59,7 +61,7 @@ public class SolicitarSeguro extends javax.swing.JFrame {
         LineaVehiculo = new javax.swing.JComboBox();
         ModeloVehiculo = new javax.swing.JComboBox();
         txtValVehiculo = new javax.swing.JTextField();
-        GuardarInformacion = new javax.swing.JButton();
+        Cotizar = new javax.swing.JButton();
         txtCostoPrima = new javax.swing.JTextField();
         txtDedusible = new javax.swing.JTextField();
         PosibleCostoPrima = new javax.swing.JTextField();
@@ -70,7 +72,7 @@ public class SolicitarSeguro extends javax.swing.JFrame {
         Regreso = new javax.swing.JButton();
         AseguradoraImagen = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        MostrarDato = new javax.swing.JButton();
 
         jTextField5.setText("jTextField5");
 
@@ -178,11 +180,11 @@ public class SolicitarSeguro extends javax.swing.JFrame {
             }
         });
 
-        GuardarInformacion.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
-        GuardarInformacion.setText("COTIZAR");
-        GuardarInformacion.addActionListener(new java.awt.event.ActionListener() {
+        Cotizar.setFont(new java.awt.Font("Yu Gothic Medium", 1, 11)); // NOI18N
+        Cotizar.setText("COTIZAR");
+        Cotizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarInformacionActionPerformed(evt);
+                CotizarActionPerformed(evt);
             }
         });
 
@@ -212,6 +214,11 @@ public class SolicitarSeguro extends javax.swing.JFrame {
 
         Solicitar.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 11)); // NOI18N
         Solicitar.setText("Solicitar Seguro");
+        Solicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SolicitarActionPerformed(evt);
+            }
+        });
 
         Regreso.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 11)); // NOI18N
         Regreso.setText("Cancelar");
@@ -225,10 +232,10 @@ public class SolicitarSeguro extends javax.swing.JFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Aseguradora \"Automas\"");
 
-        jButton6.setText("Mostrar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        MostrarDato.setText("Mostrar");
+        MostrarDato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                MostrarDatoActionPerformed(evt);
             }
         });
 
@@ -312,7 +319,7 @@ public class SolicitarSeguro extends javax.swing.JFrame {
                                         .addComponent(jLabel7)
                                         .addGap(77, 77, 77)
                                         .addComponent(MarcaVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(GuardarInformacion, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(Cotizar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(79, 79, 79)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,7 +332,7 @@ public class SolicitarSeguro extends javax.swing.JFrame {
                                         .addGap(29, 29, 29)
                                         .addComponent(txtPosibleDeducible, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(77, 77, 77)
-                                .addComponent(jButton6)))
+                                .addComponent(MostrarDato)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(10, 10, 10))
         );
@@ -396,7 +403,7 @@ public class SolicitarSeguro extends javax.swing.JFrame {
                         .addComponent(jLabel10))
                     .addComponent(txtValVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
-                .addComponent(GuardarInformacion)
+                .addComponent(Cotizar)
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtCostoPrima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -423,7 +430,7 @@ public class SolicitarSeguro extends javax.swing.JFrame {
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6)
+                        .addComponent(MostrarDato)
                         .addGap(27, 27, 27)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Deduciblemenor)
@@ -448,28 +455,17 @@ public class SolicitarSeguro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PosibleCostoPrimaActionPerformed
 
-    private void GuardarInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarInformacionActionPerformed
-        if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtDPI.getText().isEmpty() || txtTelefono.getText().isEmpty() || TipoVehiculo.getSelectedItem().equals("Elige una Opcion") || UsoVehiculo.getSelectedItem().equals("Elige una Opcion") || MarcaVehiculo.getSelectedItem().equals("Elige una Opcion") || txtValVehiculo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor Llena todos los datos");
-        }else{
-            telefono = Integer.parseInt(txtTelefono.getText());
-            dpi = Long.parseLong(txtDPI.getText());
-            costos = Double.parseDouble(txtValVehiculo.getText());
-            persona[contador]=new DatosPersonas(txtNombre.getText(), txtApellido.getText(), TipoVehiculo.getSelectedItem().toString(), UsoVehiculo.getSelectedItem().toString(), MarcaVehiculo.getSelectedItem().toString(), dpi, telefono, costos);
-           contador++;
-            JOptionPane.showMessageDialog(null, "Cotizado");
-           }
-    }//GEN-LAST:event_GuardarInformacionActionPerformed
+    private void CotizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CotizarActionPerformed
+        
+    }//GEN-LAST:event_CotizarActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void MostrarDatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarDatoActionPerformed
         try {
-            for (int contador = 0; contador < persona.length-1; contador++) {
-            persona[contador].mostrar();
-            }
+            personita.mostrar();
         } catch (Exception e) {
-            
+            JOptionPane.showMessageDialog(null, "No hay dadtos que mostrar aun");
         }    
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_MostrarDatoActionPerformed
 
     private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
         
@@ -530,6 +526,22 @@ public class SolicitarSeguro extends javax.swing.JFrame {
         SolicitarSeguro.this.dispose();
     }//GEN-LAST:event_RegresoActionPerformed
 
+    private void SolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitarActionPerformed
+        try {
+            if (txtNombre.getText().isEmpty() || txtApellido.getText().isEmpty() || txtDPI.getText().isEmpty() || txtTelefono.getText().isEmpty() || TipoVehiculo.getSelectedItem().equals("Elige una Opcion") || UsoVehiculo.getSelectedItem().equals("Elige una Opcion") || MarcaVehiculo.getSelectedItem().equals("Elige una Opcion") || txtValVehiculo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor Llena todos los datos");
+        }else{
+            telefono = Integer.parseInt(txtTelefono.getText());
+            costos = Double.parseDouble(txtValVehiculo.getText());
+            solicitar = new DatosPersonas(txtNombre.getText(), txtApellido.getText(), TipoVehiculo.getSelectedItem().toString(), UsoVehiculo.getSelectedItem().toString(), MarcaVehiculo.getSelectedItem().toString(), txtDPI.getText(), telefono, costos);
+            personita.solicitarSeguro(solicitar);
+            JOptionPane.showMessageDialog(null, "Cotizado");
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ahorita vemos tus cagadales perame");
+        }
+    }//GEN-LAST:event_SolicitarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -567,18 +579,18 @@ public class SolicitarSeguro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AseguradoraImagen;
+    private javax.swing.JButton Cotizar;
     private javax.swing.JButton Deduciblemayor;
     private javax.swing.JButton Deduciblemenor;
-    private javax.swing.JButton GuardarInformacion;
     private javax.swing.JComboBox LineaVehiculo;
     private javax.swing.JComboBox MarcaVehiculo;
     private javax.swing.JComboBox ModeloVehiculo;
+    private javax.swing.JButton MostrarDato;
     private javax.swing.JTextField PosibleCostoPrima;
     private javax.swing.JButton Regreso;
     private javax.swing.JButton Solicitar;
     private javax.swing.JComboBox TipoVehiculo;
     private javax.swing.JComboBox UsoVehiculo;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

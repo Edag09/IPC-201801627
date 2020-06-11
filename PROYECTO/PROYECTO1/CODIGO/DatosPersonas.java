@@ -1,16 +1,13 @@
 
 package Org.EduardoAgustin.Clases;
 
-import javax.swing.JOptionPane;
-
 public class DatosPersonas {
     
-    private String nombre,apellido,tipoVehiculo,usoVehiculo,marca;
+    private String nombre,apellido,tipoVehiculo,usoVehiculo,marca,dpi;
     private int telefono;
-    private long dpi;
     private double valvehiculo;
 
-    public DatosPersonas(String nombre, String apellido, String tipoVehiculo, String usoVehiculo, String marca, long dpi, int telefono, double valvehiculo) {
+    public DatosPersonas(String nombre, String apellido, String tipoVehiculo, String usoVehiculo, String marca, String dpi, int telefono, double valvehiculo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoVehiculo = tipoVehiculo;
@@ -20,10 +17,6 @@ public class DatosPersonas {
         this.telefono = telefono;
         this.valvehiculo = valvehiculo;
     }
-
-    public DatosPersonas() {
-    }
-    
     /**
      * @return the nombre
      */
@@ -97,14 +90,14 @@ public class DatosPersonas {
     /**
      * @return the dpi
      */
-    public long getDpi() {
+    public String getDpi() {
         return dpi;
     }
 
     /**
      * @param dpi the dpi to set
      */
-    public void setDpi(long dpi) {
+    public void setDpi(String dpi) {
         this.dpi = dpi;
     }
 
@@ -136,21 +129,5 @@ public class DatosPersonas {
         this.valvehiculo = valvehiculo;
     }
     
-    public void mostrar(){
-        JOptionPane.showMessageDialog(null, "Nombre: "+nombre+"\nApellido: "+apellido+"\nDPI: "+dpi+""
-                + "\nTelefono: "+telefono+"\nTipo de Vehiculo: "+tipoVehiculo+"\nUso de Vehiculo: "+usoVehiculo+""
-                + "\nMarca: "+marca+"\nValor de Vehiculo: "+valvehiculo);
-    }
-    
-    public boolean verificar(long DPI){
-        
-        if (dpi == DPI) {
-            return true;
-        }else{
-            
-        }
-        return false;
-    }
-
     
 }

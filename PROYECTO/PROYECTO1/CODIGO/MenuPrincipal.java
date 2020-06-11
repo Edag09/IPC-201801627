@@ -26,13 +26,12 @@ public class MenuPrincipal extends JFrame {
     this.setLayout(null);
     
     Cargardatos = new JLabel("Cargar Datos");
-    Cargardatos.setBounds(100, 30, 100, 25);
-    Cargardatos.setFont(new Font("Cavolini", Font.ITALIC, 14));
+    Cargardatos.setBounds(90, 30, 120, 25);
+    Cargardatos.setFont(new Font("Orange Juice", Font.ITALIC, 25));
     
-    CargarDatos = new JButton("");
+    CargarDatos = new JButton();
     CargarDatos.setBounds(15, 15, 70, 70);
-    CargarDatos.setFont(new Font("Cavolini", Font.ITALIC, 12));
-    CargarDatos.setIcon(new ImageIcon("C:\\\\Users\\\\Eduardo Agustin\\\\Documents\\\\NetBeansProjects\\\\Proyecto1Vacas\\\\src\\\\Iconos Proyecto\\\\Cargar.png"));
+    CargarDatos.setIcon(new ImageIcon("C:\\\\Users\\\\Eduardo Agustin\\\\Documents\\\\NetBeansProjects\\\\Proyecto1Vacas\\\\src\\\\Iconos Proyecto\\\\cargamasiva.png"));
     ActionListener datos = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
@@ -45,8 +44,8 @@ public class MenuPrincipal extends JFrame {
     
     
     SolicitarSeguro = new JLabel("Solicitar Seguro");
-    SolicitarSeguro.setBounds(50, 245, 110, 25);
-    SolicitarSeguro.setFont(new Font("Cavolini", Font.ITALIC, 15));
+    SolicitarSeguro.setBounds(35, 245, 130, 25);
+    SolicitarSeguro.setFont(new Font("Orange Juice", Font.ITALIC, 25));
     
     SoliSeguro = new JButton();
     SoliSeguro.setBounds(40, 110, 132, 132);
@@ -62,8 +61,8 @@ public class MenuPrincipal extends JFrame {
     SoliSeguro.addActionListener(seguro);
     
     IniciarSesion = new JLabel("Iniciar Sesion");
-    IniciarSesion.setBounds(245, 245, 110, 25);
-    IniciarSesion.setFont(new Font("Cavolini", Font.ITALIC, 15));
+    IniciarSesion.setBounds(235, 245, 110, 25);
+    IniciarSesion.setFont(new Font("Orange Juice", Font.ITALIC, 25));
     
     Login = new JButton();
     Login.setBounds(225,110, 132, 132);
@@ -71,7 +70,7 @@ public class MenuPrincipal extends JFrame {
     ActionListener log = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
-        Login log = new Login();
+        Log log = new Log();
         log.setVisible(true);
         MenuPrincipal.this.dispose();
         }
@@ -79,8 +78,8 @@ public class MenuPrincipal extends JFrame {
     Login.addActionListener(log);
     
     Salir = new JLabel("Salir");
-    Salir.setBounds(470, 245, 110, 25);
-    Salir.setFont(new Font("Cavolini", Font.ITALIC, 15));
+    Salir.setBounds(475, 245, 110, 25);
+    Salir.setFont(new Font("Orange Juice", Font.ITALIC, 25));
     
     salir = new JButton();
     salir.setIcon(new ImageIcon("C:\\Users\\Eduardo Agustin\\Documents\\NetBeansProjects\\Proyecto1Vacas\\src\\Iconos Proyecto\\Salir.png"));    
