@@ -4,6 +4,7 @@ public abstract class Transporte {
  
     
     public abstract void avanzar();
+    
     public abstract void frenar();
     
 }

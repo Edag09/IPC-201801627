@@ -1,24 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Tarea2;
 
-/**
- *
- * @author Eduardo Agustin
- */
 public class Caballo extends Transporte {
+    private String nombre;
+    private String raza;
+    private int edad;
 
+    public Caballo(String nombre, String raza, int edad) {
+        this.nombre = nombre;
+        this.raza = raza;
+        this.edad = edad;
+    }
+    
+    
+    
     @Override
     public void avanzar() {
-     
+        System.out.println("AVANZA-CABALLO-"+nombre+"-RAZA-"+raza+"-EDAD-"+edad);
     }
 
     @Override
     public void frenar() {
-    
+        System.out.println("FRENE-CABALLO-"+nombre+"-RAZA-"+raza+"-EDAD-"+edad);
     }
+
     
 }
