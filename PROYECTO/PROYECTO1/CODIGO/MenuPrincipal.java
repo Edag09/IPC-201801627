@@ -5,7 +5,6 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,7 +34,7 @@ public class MenuPrincipal extends JFrame {
     ActionListener datos = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
-        CargaDeDatos dato = new CargaDeDatos();
+        Carga dato = new Carga();
         dato.setVisible(true);
         MenuPrincipal.this.dispose();
         }

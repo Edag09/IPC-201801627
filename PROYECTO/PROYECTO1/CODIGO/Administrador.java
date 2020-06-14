@@ -205,43 +205,43 @@ public class Administrador extends javax.swing.JFrame {
        Log login = new Log();
        JOptionPane.showMessageDialog(null, "Sesion Finalizada");
        login.setVisible(true);
-       Administrador.this.dispose(); 
+       Administrador.this.setVisible(false);
     }//GEN-LAST:event_salirActionPerformed
 
     private void SolicitudSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitudSeguroActionPerformed
     Solicitudes soli = new Solicitudes();
     soli.setVisible(true);
-    Administrador.this.dispose();
+    Administrador.this.setVisible(false);
     }//GEN-LAST:event_SolicitudSeguroActionPerformed
 
     private void ReporteIncidentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteIncidentesActionPerformed
        ReportesIncidentes reporte = new ReportesIncidentes();
        reporte.setVisible(true);
-       Administrador.this.dispose();
+       Administrador.this.setVisible(false);
     }//GEN-LAST:event_ReporteIncidentesActionPerformed
 
     private void TallerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TallerActionPerformed
         Taller taller = new Taller();
         taller.setVisible(true);
-        Administrador.this.dispose();
+        Administrador.this.setVisible(false);
     }//GEN-LAST:event_TallerActionPerformed
 
     private void AseguradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AseguradosActionPerformed
         Asegurados asegurado = new Asegurados();
         asegurado.setVisible(true);
-        Administrador.this.dispose();
+        Administrador.this.setVisible(false);
     }//GEN-LAST:event_AseguradosActionPerformed
 
     private void NoAseguradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoAseguradosActionPerformed
        NoAsegurados na = new NoAsegurados();
        na.setVisible(true);
-       Administrador.this.dispose();
+       Administrador.this.setVisible(false);
     }//GEN-LAST:event_NoAseguradosActionPerformed
 
     private void ReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportesActionPerformed
         Reportes reporte = new Reportes();
         reporte.setVisible(true);
-        Administrador.this.dispose();
+        Administrador.this.setVisible(false);
     }//GEN-LAST:event_ReportesActionPerformed
 
     /**

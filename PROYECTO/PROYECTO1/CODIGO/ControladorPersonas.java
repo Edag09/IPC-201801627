@@ -3,48 +3,46 @@ package Org.EduardoAgustin.Clases;
 import javax.swing.JOptionPane;
 
 
+
+
 public class ControladorPersonas {
-    DatosPersonas persona[];
-    int contador;
+    public static DatosPersonas persona[] = new DatosPersonas[25];
 
-    public ControladorPersonas() {
-        this.persona=new DatosPersonas[20];
-        this.contador =0;
+
+    public  void solicitarSeguro(String nombre,String apellito,String  TipoVehiculo,String UsoVehiculo,String MarcaVehiculo,String dpi,int telefono, double valvehiculo){
+        for (int i = 0; i < persona.length; i++) {
+              if (persona[i]==null) {
+                persona[i] = new DatosPersonas(nombre, apellito,  TipoVehiculo, UsoVehiculo, MarcaVehiculo, dpi, telefono, valvehiculo); 
+                break;
+            }
+        }
+    }
+    
+    public void imprimir(){
+        for (int i = 0; i < persona.length; i++) {
+            if (persona[i] != null) {
+                JOptionPane.showMessageDialog(null, "Nombre: "+persona[i].getNombre()+"\nApellido: "+persona[i].getApellido()+"\nDPI: "+persona[i].getDpi()
+                +"\nTelefono: "+persona[i].getTelefono()+"\nTipo de Vehiculo: "+persona[i].getTipoVehiculo()+"\nUso Vehiculo: "+persona[i].getUsoVehiculo()+"\nValor Vehiculo: "+persona[i].getValvehiculo());
+//                System.out.println(persona[i].imprimir());
+            }
+        }
+    }
+    
+    public String ValidacionDPI(String dpi){
+        String dpi2="";
+        for (int i = 0; i < persona.length; i++) {
+                if (persona[i] != null) {
+                    System.out.println("hola");
+                if (persona[i].getDpi().equalsIgnoreCase(dpi)) {
+                    dpi2= persona[i].getDpi();
+                    System.out.println("hola");
+            }
+            }else{
+                break;
+                }
+        }
+        return dpi2;
     }
 
-    public void solicitarSeguro(DatosPersonas solicitantes){
-        if (this.contador <=19) {
-            this.persona[this.contador] = solicitantes; 
-            this.contador++;
-        }else{
-            JOptionPane.showMessageDialog(null, "Espacio Insuficiente");
-        }
-    }
-    
-    public void mostrar(){
-        int personaActual;
-        for (personaActual = 0; personaActual < this.contador; personaActual++) {
-            DatosPersonas solicitantes = this.persona[personaActual];
-            JOptionPane.showMessageDialog(null, "Los datos personales son: \nNombre: "+solicitantes.getNombre()+"\nApellido: "+solicitantes.getApellido()+"\nDPI: "+solicitantes.getDpi()
-            +"\nTelefono: "+solicitantes.getTelefono()+"\nTipo de Vehiculo: "+solicitantes.getTipoVehiculo()+"\nUso del Vehiculo: "+solicitantes.getUsoVehiculo()
-            +"\nMarca del Vehiculo: "+solicitantes.getMarca()+"\nValor del Vehiculo: "+solicitantes.getValvehiculo());
-        }
-    
-    }
-    
-    public boolean validacionDpi(long dpi){
-        String DPI = String.valueOf(dpi);
-        int personaActual;
-        for (personaActual = 0; personaActual < this.contador; personaActual++) {
-             DatosPersonas solicitantes = this.persona[personaActual];
-             if (DPI.equalsIgnoreCase(solicitantes.getDpi())) {
-                 return true;
-            } 
-             
-        }
-        return false;
-    }
-    
-    
     
 }

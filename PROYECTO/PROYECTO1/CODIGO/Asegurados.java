@@ -96,7 +96,7 @@ public class Asegurados extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       Administrador admin = new Administrador();
       admin.setVisible(true);
-      Asegurados.this.dispose();
+      Asegurados.this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

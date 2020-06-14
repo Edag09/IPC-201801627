@@ -1,4 +1,3 @@
-
 package Org.EduardoAgustin.Clases;
 
 public class DatosPersonas {
@@ -6,6 +5,9 @@ public class DatosPersonas {
     private String nombre,apellido,tipoVehiculo,usoVehiculo,marca,dpi;
     private int telefono;
     private double valvehiculo;
+
+    public DatosPersonas() {
+    }
 
     public DatosPersonas(String nombre, String apellido, String tipoVehiculo, String usoVehiculo, String marca, String dpi, int telefono, double valvehiculo) {
         this.nombre = nombre;
@@ -129,5 +131,8 @@ public class DatosPersonas {
         this.valvehiculo = valvehiculo;
     }
     
+    public String imprimir(){
+        return this.getNombre();
+    }
     
 }
