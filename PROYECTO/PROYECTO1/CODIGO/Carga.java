@@ -112,7 +112,6 @@ public class Carga extends javax.swing.JFrame {
                     String dato1 = txtCargaDatos.getText();
                     String s1[] = dato1.split("\n");
                         for (String info: s1) {
-                        System.out.println(info);
                         String s2[] = info.split(",");
                         switch(s2[0]){
                         case "TIPO":
@@ -153,6 +152,8 @@ public class Carga extends javax.swing.JFrame {
                             break;
                         }
                         }
+                        JOptionPane.showMessageDialog(null, "Cargados");
+                        txtCargaDatos.setText("");
                         control.mostrarTipo();
                         control.mostrarModelo();
                         control.mostrarMarca();

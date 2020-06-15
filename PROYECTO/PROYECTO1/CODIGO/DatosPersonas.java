@@ -2,23 +2,27 @@ package Org.EduardoAgustin.Clases;
 
 public class DatosPersonas {
     
-    private String nombre,apellido,tipoVehiculo,usoVehiculo,marca,dpi;
-    private int telefono;
+    private String nombre,apellido,tipoVehiculo,usoVehiculo,marca,dpi,linea;
+    private int telefono,modelo;
     private double valvehiculo;
 
     public DatosPersonas() {
     }
 
-    public DatosPersonas(String nombre, String apellido, String tipoVehiculo, String usoVehiculo, String marca, String dpi, int telefono, double valvehiculo) {
+    public DatosPersonas(String nombre, String apellido, String tipoVehiculo, String usoVehiculo, String marca, String dpi, String linea, int telefono, int modelo, double valvehiculo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoVehiculo = tipoVehiculo;
         this.usoVehiculo = usoVehiculo;
         this.marca = marca;
         this.dpi = dpi;
+        this.linea = linea;
         this.telefono = telefono;
+        this.modelo = modelo;
         this.valvehiculo = valvehiculo;
     }
+
+    
     /**
      * @return the nombre
      */
@@ -133,6 +137,34 @@ public class DatosPersonas {
     
     public String imprimir(){
         return this.getNombre();
+    }
+
+    /**
+     * @return the linea
+     */
+    public String getLinea() {
+        return linea;
+    }
+
+    /**
+     * @param linea the linea to set
+     */
+    public void setLinea(String linea) {
+        this.linea = linea;
+    }
+
+    /**
+     * @return the modelo
+     */
+    public int getModelo() {
+        return modelo;
+    }
+
+    /**
+     * @param modelo the modelo to set
+     */
+    public void setModelo(int modelo) {
+        this.modelo = modelo;
     }
     
 }
