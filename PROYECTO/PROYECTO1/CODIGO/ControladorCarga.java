@@ -286,8 +286,6 @@ public class ControladorCarga {
     
     
     
-    
-    
     public void ingresarMecanica(String nombreTaller, double precioAplicado){
         for (int i = 0; i < mecanica.length; i++) {
             if (mecanica[i] == null) {
@@ -315,7 +313,29 @@ public class ControladorCarga {
          }
      }
     
-     
+    public String nombreServicio(String nombre){
+        for (int i = 0; i < mecanica.length; i++) {
+            if (mecanica[i] != null) {
+                if (mecanica[i].getNombreActividad().equalsIgnoreCase(nombre)) {
+                    return mecanica[i].getNombreActividad();
+                }
+            }
+        }
+        return null;
+    }
+    
+    public double costoServicio(String nombreServicio){
+        for (int i = 0; i < mecanica.length; i++) {
+            if (mecanica[i] != null) {
+                if (mecanica[i].getNombreActividad() == nombreServicio) {
+                    return mecanica[i].getPrecio();
+                }
+            }
+        }
+        return 0;
+    }
+    
+    
     
     public void ingresarRepuesto(String repuesto, double precio){
         for (int i = 0; i < repuestos.length; i++) {
@@ -343,5 +363,27 @@ public class ControladorCarga {
          }
          }
      }
+    
+    public String nombreRepuesto(String nombre){
+        for (int i = 0; i < repuestos.length; i++) {
+            if (repuestos[i] != null) {
+                if (repuestos[i].getNombreRepuesto().equalsIgnoreCase(nombre)) {
+                    return repuestos[i].getNombreRepuesto();
+                }
+            }
+        }
+        return null;
+    }
+    
+    public double precioRepuesto(String nombre){
+        for (int i = 0; i < repuestos.length; i++) {
+            if (repuestos[i] != null) {
+                if (repuestos[i].getNombreRepuesto() == nombre) {
+                    return repuestos[i].getPrecioRepuesto();
+                }
+            }
+        }
+        return 0;
+    }
     
 }

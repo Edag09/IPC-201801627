@@ -10,10 +10,8 @@ package Org.EduardoAgustin.Ventanas;
  * @author Eduardo Agustin
  */
 public class PagosNoAsegurados extends javax.swing.JFrame {
-
-    /**
-     * Creates new form PagosNoAsegurados
-     */
+    
+    String dpi;
     public PagosNoAsegurados() {
         initComponents();
         this.setTitle("Reporte de Pagos --- No Asegurados");
@@ -35,7 +33,6 @@ public class PagosNoAsegurados extends javax.swing.JFrame {
         DatosNoAsegurados = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaPagosNoAsegurados = new javax.swing.JTable();
-        MostrarTabla = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,8 +55,6 @@ public class PagosNoAsegurados extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(TablaPagosNoAsegurados);
 
-        MostrarTabla.setText("Mostrar");
-
         salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Proyecto/Regreso.png"))); // NOI18N
         salir.setText("Cerrar Sesion");
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -78,8 +73,6 @@ public class PagosNoAsegurados extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(MostrarTabla)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(salir)))
                 .addContainerGap())
@@ -90,9 +83,7 @@ public class PagosNoAsegurados extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(MostrarTabla)
-                        .addComponent(salir)))
+                    .addComponent(salir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -102,7 +93,7 @@ public class PagosNoAsegurados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-       UsuarionoAsegurado una = new UsuarionoAsegurado();
+       UsuarionoAsegurado una = new UsuarionoAsegurado(dpi);
        una.setVisible(true);
        PagosNoAsegurados.this.dispose();
     }//GEN-LAST:event_salirActionPerformed
@@ -144,7 +135,6 @@ public class PagosNoAsegurados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea DatosNoAsegurados;
-    private javax.swing.JButton MostrarTabla;
     private javax.swing.JTable TablaPagosNoAsegurados;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

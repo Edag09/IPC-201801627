@@ -5,25 +5,40 @@
  */
 package Org.EduardoAgustin.Ventanas;
 
+import Org.EduardoAgustin.Clases.ControladorPersonas;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Eduardo Agustin
  */
 public class UsuarioAsegurado extends javax.swing.JFrame {
-
-    Calendar calendario;
-    int fecha;
+    String dpi="";
     
-    public UsuarioAsegurado() {
+    public UsuarioAsegurado(String dpi) {
         initComponents();
         this.setTitle("Panel Asegurado");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.dpi = dpi;
+        Date fecha = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MMM-YYYY");
+        lbFecha.setText(formato.format(fecha));
+        mostrarDatos();
     }
-
+    ControladorPersonas personalogeada = new ControladorPersonas();
+    
+    
+    
+    public void mostrarDatos(){
+        String cadenaText="Nombre: "+personalogeada.RetornarNombre(this.dpi)+"\nTelefono: "+personalogeada.RetornarTelefono(this.dpi)+"\nDPI: "+personalogeada.RetornarDPI(this.dpi)+"\nTipo: Asegurado";
+        AreaDatos.setText(cadenaText);
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,13 +46,15 @@ public class UsuarioAsegurado extends javax.swing.JFrame {
 
         salir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        AreaDatos = new javax.swing.JTextArea();
         MisSeguros = new javax.swing.JButton();
         MisIncidentes = new javax.swing.JButton();
         Pagos = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lbFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,10 +66,10 @@ public class UsuarioAsegurado extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        AreaDatos.setEditable(false);
+        AreaDatos.setColumns(20);
+        AreaDatos.setRows(5);
+        jScrollPane1.setViewportView(AreaDatos);
 
         MisSeguros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Proyecto/shield.png"))); // NOI18N
         MisSeguros.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +104,11 @@ public class UsuarioAsegurado extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Pagos");
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
+        jLabel1.setText("Fecha:");
+
+        lbFecha.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,10 +131,14 @@ public class UsuarioAsegurado extends javax.swing.JFrame {
                             .addComponent(Pagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(salir)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(salir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -121,7 +147,11 @@ public class UsuarioAsegurado extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(salir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(lbFecha)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -139,7 +169,7 @@ public class UsuarioAsegurado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MisSegurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MisSegurosActionPerformed
-        MisSegurosAsegurados seguritos = new MisSegurosAsegurados();
+        MisSegurosAsegurados seguritos = new MisSegurosAsegurados(this.dpi);
         seguritos.setVisible(true);
         UsuarioAsegurado.this.dispose();
     }//GEN-LAST:event_MisSegurosActionPerformed
@@ -151,61 +181,30 @@ public class UsuarioAsegurado extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void MisIncidentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MisIncidentesActionPerformed
-        MisIncidentesAsegurados incidentes = new MisIncidentesAsegurados();
+        MisIncidentesAsegurados incidentes = new MisIncidentesAsegurados(this.dpi);
         incidentes.setVisible(true);
         UsuarioAsegurado.this.dispose();
     }//GEN-LAST:event_MisIncidentesActionPerformed
 
     private void PagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagosActionPerformed
-       HistorialPagosAsegurados hp = new HistorialPagosAsegurados();
+       HistorialPagosAsegurados hp = new HistorialPagosAsegurados(this.dpi);
        hp.setVisible(true);
        UsuarioAsegurado.this.dispose();
     }//GEN-LAST:event_PagosActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UsuarioAsegurado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UsuarioAsegurado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UsuarioAsegurado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UsuarioAsegurado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UsuarioAsegurado().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea AreaDatos;
     private javax.swing.JButton MisIncidentes;
     private javax.swing.JButton MisSeguros;
     private javax.swing.JButton Pagos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lbFecha;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

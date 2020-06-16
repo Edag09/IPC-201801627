@@ -51,43 +51,43 @@ public class SolicitarSeguro extends javax.swing.JFrame {
     
     
      public void datos(){
-         if (cargas.datosT(TipodVehiculo.getSelectedItem().toString()) == TipodVehiculo.getSelectedItem().toString()) {
+         try {
+             if (cargas.datosT(TipodVehiculo.getSelectedItem().toString()) == TipodVehiculo.getSelectedItem().toString()) {
+                    costo  = Double.parseDouble(txtValVehiculo.getText());
                 if (cargas.valorAsegurado(costo) == costo) {
-                    JOptionPane.showMessageDialog(null, "Si esta bien");
                     anio = Integer.parseInt(ModeloVehiculo.getSelectedItem().toString());
                 }if(cargas.anio(anio)==anio){
                 }if (cargas.nombreMarca(MarcaVehiculo.getSelectedItem().toString())== MarcaVehiculo.getSelectedItem().toString()) {
                 }if (cargas.nombreLinea(lineaVehiculo.getSelectedItem().toString())== lineaVehiculo.getSelectedItem().toString()) {                    
                 }if (cargas.nombreUso(UsoVehiculo.getSelectedItem().toString())== UsoVehiculo.getSelectedItem().toString()) {
-                    costo  = Double.parseDouble(txtValVehiculo.getText());
+                    
                     porsLinea = cargas.porcentajeLinea(lineaVehiculo.getSelectedItem().toString());
                     porsMarca = cargas.porcentajeMarca(MarcaVehiculo.getSelectedItem().toString());
                     porsModelo = cargas.porcentaje(anio);
                     porsUso = cargas.porcentajeUso(UsoVehiculo.getSelectedItem().toString());
                     
                     cotizar.PTR(porsMarca, porsLinea, porsUso);
-                    System.out.println(df.format(cotizar.PTR(porsMarca, porsLinea, porsUso)));
                     
                     cotizar.PrimaTotal(costo, cotizar.PTR(porsMarca, porsLinea, porsUso));
-                    System.out.println(df.format(cotizar.PrimaTotal(costo, cotizar.PTR(porsMarca, porsLinea, porsUso))));
                     
                     cotizar.CostoPrima(cotizar.PrimaTotal(costo, cotizar.PTR(porsMarca, porsLinea, porsUso)));
                     txtCostoPrima.setText(df.format(cotizar.CostoPrima(cotizar.PrimaTotal(costo, cotizar.PTR(porsMarca, porsLinea, porsUso)))));
+                    PosibleCostoPrima.setText(df.format(cotizar.CostoPrima(cotizar.PrimaTotal(costo, cotizar.PTR(porsMarca, porsLinea, porsUso)))));
                     
                     cotizar.CostoDeducible(costo);
                     txtDedusible.setText(df.format(cotizar.CostoDeducible(costo)));
+                    txtPosibleDeducible.setText(df.format(cotizar.CostoDeducible(costo)));
                     
                     cotizar.valorReal(costo, porsModelo);
                 }
-            }else{
-                JOptionPane.showMessageDialog(null, "Te pasaste de verga");
+             }else{
+                JOptionPane.showMessageDialog(null, "Ha Excedido el valor del Auto");
             }
+         } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, "Error");
+         }
 }       
                 
-    
-            
-            
-            
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -130,6 +130,7 @@ public class SolicitarSeguro extends javax.swing.JFrame {
         AseguradoraImagen = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         MostrarDato = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jTextField5.setText("jTextField5");
 
@@ -321,10 +322,17 @@ public class SolicitarSeguro extends javax.swing.JFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Aseguradora \"Automas\"");
 
-        MostrarDato.setText("Mostrar");
+        MostrarDato.setText("Mostrar Datos Personales");
         MostrarDato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MostrarDatoActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Mostrar Cotizacion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -334,96 +342,95 @@ public class SolicitarSeguro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(120, 120, 120)
+                            .addComponent(Cotizar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(79, 79, 79)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel13)
+                                        .addComponent(jLabel14))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(PosibleCostoPrima, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(1, 1, 1)
+                                            .addComponent(txtPosibleDeducible, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(77, 77, 77)
+                                    .addComponent(MostrarDato))
+                                .addComponent(jButton1))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(34, 34, 34)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(58, 58, 58)
+                                        .addComponent(txtDPI, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(TipodVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(67, 67, 67)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(AseguradoraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(34, 34, 34)
-                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel6)
+                                .addGap(31, 31, 31)
+                                .addComponent(UsoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(58, 58, 58)
-                                .addComponent(txtDPI, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel7)
+                                .addGap(77, 77, 77)
+                                .addComponent(MarcaVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(34, 34, 34)
-                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel10)
+                                .addGap(23, 23, 23)
+                                .addComponent(txtValVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(29, 29, 29)
-                                .addComponent(TipodVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCostoPrima, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44)
+                                .addComponent(jLabel12)
+                                .addGap(10, 10, 10)
+                                .addComponent(txtDedusible, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(AseguradoraImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel6)
-                        .addGap(31, 31, 31)
-                        .addComponent(UsoVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7)
-                        .addGap(77, 77, 77)
-                        .addComponent(MarcaVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel10)
-                        .addGap(23, 23, 23)
-                        .addComponent(txtValVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(Cotizar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtCostoPrima, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel12)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtDedusible, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PosibleCostoPrima, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(txtPosibleDeducible, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(77, 77, 77)
-                        .addComponent(MostrarDato))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(Deduciblemenor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(Deduciblemayor)
-                        .addGap(18, 18, 18)
-                        .addComponent(Solicitar)
-                        .addGap(27, 27, 27)
-                        .addComponent(Regreso))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(81, 81, 81)
-                                .addComponent(lineaVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(72, 72, 72)
-                                .addComponent(ModeloVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                                .addComponent(Deduciblemenor, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(Deduciblemayor)
+                                .addGap(18, 18, 18)
+                                .addComponent(Solicitar)
+                                .addGap(27, 27, 27)
+                                .addComponent(Regreso))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addGap(81, 81, 81)
+                                    .addComponent(lineaVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addGap(72, 72, 72)
+                                    .addComponent(ModeloVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -497,7 +504,9 @@ public class SolicitarSeguro extends javax.swing.JFrame {
                     .addComponent(txtValVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addComponent(Cotizar)
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -643,7 +652,6 @@ public class SolicitarSeguro extends javax.swing.JFrame {
             String cost = txtValVehiculo.getText();
             
             cotizar.guardadCotizacion(prima, deducible, posPrima, posDedu,  vr, cost, dpi);
-            System.out.println(vr);
             JOptionPane.showMessageDialog(null, "Solicitado");
         }
         
@@ -651,16 +659,18 @@ public class SolicitarSeguro extends javax.swing.JFrame {
 
     private void DeduciblemayorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeduciblemayorActionPerformed
         try {
-            double dedu;
+            double dedu,res;
             dedu=+0.1;
-            cotizar.CostoDeducible(costo);
-            txtPosibleDeducible.setText(df.format(cotizar.CostoDeducible(costo)+dedu));
-            dedu=+0.1;
+            double pd = Double.parseDouble(txtPosibleDeducible.getText());
+            res = pd+dedu;
+            txtPosibleDeducible.setText(df.format(res));
             
-            double prim;
-            prim =-0.03;
-            PosibleCostoPrima.setText(df.format( cotizar.CostoPrima(cotizar.PrimaTotal(costo, cotizar.PTR(porsMarca, porsLinea, porsUso)))+prim));
-        } catch (Exception e) {
+            double prim,res2;
+            prim =+0.03;
+            double pcp = Double.parseDouble(PosibleCostoPrima.getText());
+            res2 = pcp-prim;
+            PosibleCostoPrima.setText(df.format(res2));
+         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se puede calcular aun");
         }
         
@@ -668,15 +678,17 @@ public class SolicitarSeguro extends javax.swing.JFrame {
 
     private void DeduciblemenorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeduciblemenorActionPerformed
         try {
-            double dedu;
-            dedu=-0.1;
-            cotizar.CostoDeducible(costo);
-            txtPosibleDeducible.setText(df.format(cotizar.CostoDeducible(costo)+dedu));
+           double dedu,res;
+            dedu=+0.1;
+            double pd = Double.parseDouble(txtPosibleDeducible.getText());
+            res = pd-dedu;
+            txtPosibleDeducible.setText(df.format(res));
             
-            double prim;
+            double prim,res2;
             prim =+0.03;
-            PosibleCostoPrima.setText(df.format( cotizar.CostoPrima(cotizar.PrimaTotal(costo, cotizar.PTR(porsMarca, porsLinea, porsUso)))+prim));
-        } catch (Exception e) {
+            double pcp = Double.parseDouble(PosibleCostoPrima.getText());
+            res2 = pcp+prim;
+            PosibleCostoPrima.setText(df.format(res2));} catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se puede calcular aun");
         }
     }//GEN-LAST:event_DeduciblemenorActionPerformed
@@ -696,6 +708,10 @@ public class SolicitarSeguro extends javax.swing.JFrame {
     private void txtDedusibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDedusibleActionPerformed
         
     }//GEN-LAST:event_txtDedusibleActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cotizar.imprimir();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -748,6 +764,7 @@ public class SolicitarSeguro extends javax.swing.JFrame {
     private javax.swing.JButton Solicitar;
     private javax.swing.JComboBox TipodVehiculo;
     private javax.swing.JComboBox UsoVehiculo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

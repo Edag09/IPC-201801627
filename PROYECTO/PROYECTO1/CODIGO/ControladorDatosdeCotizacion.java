@@ -1,6 +1,7 @@
 package Org.EduardoAgustin.Clases;
 
 import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 
 public class ControladorDatosdeCotizacion {
     public static DatosCotizacion cotizado[] = new DatosCotizacion[25];
@@ -13,6 +14,58 @@ public class ControladorDatosdeCotizacion {
             }
         }
     }
+    
+    public void imprimir(){
+        for (int i = 0; i < cotizado.length; i++) {
+            if (cotizado[i] != null) {
+                JOptionPane.showMessageDialog(null, "Prima: "+cotizado[i].getCostoPrimal()+"\nDeducible: "+cotizado[i].getDeducible()+"\nPosible Costo Prima: "+cotizado[i].getPosibleCostoPrima()
+                +"\nPosible Deducible: "+cotizado[i].getPosibleDeducible()+"\nValore Real: "+cotizado[i].getValorReal()+"\nValor Vehiculo: "+cotizado[i].getValVehiculo()+"\nDPI: "+cotizado[i].getDpi());
+            }
+        }
+    }
+    
+    public String Prima(String dpi){
+        for (int i = 0; i < cotizado.length; i++) {
+            if (cotizado[i] != null) {
+                if (cotizado[i].getDpi().equalsIgnoreCase(dpi)) {
+                    return cotizado[i].getCostoPrimal();
+                }
+            }else{
+                break;
+            }
+        }
+        return null;
+    }
+    
+    public String Deducible(String dpi){
+        for (int i = 0; i < cotizado.length; i++) {
+            if (cotizado[i] != null) {
+                if (cotizado[i].getDpi().equalsIgnoreCase(dpi)) {
+                    return cotizado[i].getDeducible();
+                }
+            }else{
+                break;
+            }
+        }
+        return null;
+    }
+    
+    public String ValorReal(String dpi){
+        for (int i = 0; i < cotizado.length; i++) {
+            if (cotizado[i] != null) {
+                if (cotizado[i].getDpi().equalsIgnoreCase(dpi)) {
+                    return cotizado[i].getValorReal();
+                }
+            }else{
+                break;
+            }
+        }
+        return null;
+    }
+    
+    
+    
+    
     
     public double PTR(double porsMarca, double porsLinea,double porsUso){
         double PTR;
@@ -56,15 +109,4 @@ public class ControladorDatosdeCotizacion {
         return masdedu;
     }
     
-    public double MenDeducible(double dedu){
-        double masdedu;
-        masdedu = (dedu - 0.10);
-        return masdedu;
-    }
-    
-    public double MenDeduMaspri(double pri){
-        double masdedu;
-        masdedu = (pri + 0.03);
-        return masdedu;
-    }
 }

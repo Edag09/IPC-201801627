@@ -5,6 +5,11 @@
  */
 package Org.EduardoAgustin.Ventanas;
 
+import Org.EduardoAgustin.Clases.ControladorDatosdeCotizacion;
+import Org.EduardoAgustin.Clases.ControladorPersonas;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eduardo Agustin
@@ -20,9 +25,34 @@ public class Solicitudes extends javax.swing.JFrame {
         this.setTitle("Solicitudes de Seguro");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        LlenarTabla();
     }
-
-   
+    int i;
+    ControladorPersonas persona = new ControladorPersonas();
+    
+    public void LlenarTabla(){
+    String Columnas[]={"DPI","Nombre","Telefono","Tipo","Descripcion","Monto","Poliza","Deducible"};
+        String Datos[][]= new String[ControladorPersonas.cont][8];
+        try {
+            for (int fila = 0; fila < Datos.length; fila++) {
+                if (Datos[fila][0] == null) {
+                    String datos = ControladorPersonas.persona[fila].getTipoVehiculo()+","+ControladorPersonas.persona[fila].getModelo()+","+ControladorPersonas.persona[fila].getMarca()+","+ControladorPersonas.persona[fila].getLinea();
+                    Datos[fila][0] = ControladorPersonas.persona[fila].getDpi();
+                    Datos[fila][1] = ControladorPersonas.persona[fila].getNombre();
+                    Datos[fila][2] = ControladorPersonas.persona[fila].getTelefono()+"";
+                    Datos[fila][3] = "AUTOMAS";
+                    Datos[fila][4] = datos;
+                    Datos[fila][5] = ControladorDatosdeCotizacion.cotizado[fila].getValorReal();
+                    Datos[fila][6] = ControladorDatosdeCotizacion.cotizado[fila].getCostoPrimal();
+                    Datos[fila][7] = ControladorDatosdeCotizacion.cotizado[fila].getDeducible();
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Trono");
+        }
+        TablaSolicitudes.setModel(new DefaultTableModel(Datos,Columnas));
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -69,12 +99,12 @@ public class Solicitudes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(193, 193, 193)
+                        .addGap(189, 189, 189)
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Salir)))
                 .addContainerGap())
         );
@@ -83,12 +113,12 @@ public class Solicitudes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(Salir))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

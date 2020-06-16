@@ -37,6 +37,12 @@ public class Log extends javax.swing.JFrame {
 
         jLabel1.setText("DPI");
 
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuarioActionPerformed(evt);
+            }
+        });
+
         iniciar.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
         iniciar.setText("Sesion");
         iniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,19 +119,23 @@ public class Log extends javax.swing.JFrame {
             Administrador admin = new Administrador();
             admin.setVisible(true);
             Log.this.dispose();
-        }if(personita.ValidacionDPI(txtUsuario.getText()).equalsIgnoreCase(txtUsuario.getText())){
-                    UsuarioAsegurado ua = new UsuarioAsegurado();
-                    ua.setVisible(true);
-                    Log.this.setVisible(false);
-        }else{
-            UsuarioAsegurado usa = new UsuarioAsegurado();
-            usa.setVisible(true);
+        }if(personita.ValidacionDPI(txtUsuario.getText())){
+                UsuarioAsegurado ua = new UsuarioAsegurado(txtUsuario.getText());
+                ua.setVisible(true);
+                Log.this.setVisible(false);
+        }else if(!txtUsuario.getText().equalsIgnoreCase("ADMIN")){
+            UsuarionoAsegurado una = new UsuarionoAsegurado(txtUsuario.getText());
+            una.setVisible(true);
             Log.this.setVisible(false);
         }
             } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Error de Autenticacion");
         }
     }//GEN-LAST:event_iniciarActionPerformed
+
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

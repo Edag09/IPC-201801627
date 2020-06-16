@@ -11,7 +11,7 @@ package Org.EduardoAgustin.Ventanas;
  */
 public class MisIncidentesNoAsegurados extends javax.swing.JFrame {
 
-    
+    String dpi;
     public MisIncidentesNoAsegurados() {
         initComponents();
         this.setTitle("Incidentes --- No Asegurados");
@@ -32,7 +32,6 @@ public class MisIncidentesNoAsegurados extends javax.swing.JFrame {
         Detalles = new javax.swing.JButton();
         pagar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        MostrarDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,8 +65,6 @@ public class MisIncidentesNoAsegurados extends javax.swing.JFrame {
             }
         });
 
-        MostrarDatos.setText("Mostrar");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,8 +81,7 @@ public class MisIncidentesNoAsegurados extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(pagar))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(MostrarDatos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton3))))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE))
                 .addContainerGap())
@@ -97,9 +93,7 @@ public class MisIncidentesNoAsegurados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(MostrarDatos))
+                        .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Detalles)
@@ -113,7 +107,7 @@ public class MisIncidentesNoAsegurados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      UsuarionoAsegurado una = new UsuarionoAsegurado();
+      UsuarionoAsegurado una = new UsuarionoAsegurado(dpi);
       una.setVisible(true);
       MisIncidentesNoAsegurados.this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -156,7 +150,6 @@ public class MisIncidentesNoAsegurados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea DatosnoAsegurados;
     private javax.swing.JButton Detalles;
-    private javax.swing.JButton MostrarDatos;
     private javax.swing.JTable TablaIncidentesNoAsegurados;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;

@@ -4,12 +4,14 @@ import javax.swing.JOptionPane;
 
 public class ControladorPersonas {
     public static DatosPersonas persona[] = new DatosPersonas[25];
+    public static int cont=0;
 
 
     public  void solicitarSeguro(String nombre,String apellito,String  TipoVehiculo,String UsoVehiculo,String MarcaVehiculo,String dpi,String linea,int telefono, int modelo,double valvehiculo){
         for (int i = 0; i < persona.length; i++) {
               if (persona[i]==null) {
                 persona[i] = new DatosPersonas(nombre, apellito,  TipoVehiculo, UsoVehiculo, MarcaVehiculo, dpi, linea ,telefono, modelo, valvehiculo); 
+                cont++;
                 break;
             }
         }
@@ -26,19 +28,68 @@ public class ControladorPersonas {
         }
     }
     
-    public String ValidacionDPI(String dpi){
-        String dpi2="";
+    public boolean ValidacionDPI(String dpi){
         for (int i = 0; i < persona.length; i++) {
-                if (persona[i] != null) {
+            if (persona[i] != null) {
                 if (persona[i].getDpi().equalsIgnoreCase(dpi)) {
-                    dpi2= persona[i].getDpi();
-            }
-            }else{
-                break;
+                    return true;
                 }
+            }else{
+            break;
+            }
         }
-        return dpi2;
+        return false;
     }
 
+    public String RetornarNombre(String dpi){
+        for (int i = 0; i < persona.length; i++) {
+            if (persona[i] != null) {
+                if (persona[i].getDpi().equalsIgnoreCase(dpi)) {
+                    return persona[i].getNombre();
+                }
+            }else{
+                break;
+            }
+        }
+        return null;
+    }
     
+    public int RetornarTelefono(String dpi){
+        for (int i = 0; i < persona.length; i++) {
+            if (persona[i] != null) {
+                if (persona[i].getDpi().equalsIgnoreCase(dpi)) {
+                    return persona[i].getTelefono();
+                }
+            }else{
+                break;
+            }
+        }
+        return 0;
+    }
+    
+    public String RetornarDPI(String dpi){
+        for (int i = 0; i < persona.length; i++) {
+            if (persona[i] != null) {
+                if (persona[i].getDpi().equalsIgnoreCase(dpi)) {
+                    return persona[i].getDpi();
+                }
+            }else{
+                break;
+            }
+        }
+        return null;
+    }
+    
+    public String MostrarDPI(String dpi){ 
+        for (int i = 0; i < persona.length; i++) {
+            if (persona[i] != null) {
+                if (persona[i].getDpi().equalsIgnoreCase(dpi)) {
+                    return persona[i].getDpi();
+                }
+            }else{
+                break;
+            }
+        }
+        return null;
+    }
 }
