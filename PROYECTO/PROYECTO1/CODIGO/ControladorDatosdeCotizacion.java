@@ -64,7 +64,31 @@ public class ControladorDatosdeCotizacion {
     }
     
     
+    public String PosiblePrima(String dpi){
+        for (int i = 0; i < cotizado.length; i++) {
+            if (cotizado[i] != null) {
+                if (cotizado[i].getDpi().equalsIgnoreCase(dpi)) {
+                    return cotizado[i].getPosibleCostoPrima();
+                }
+            }else{
+                break;
+            }
+        }
+        return null;
+    }
     
+    public String PosibleDeducible(String dpi){
+        for (int i = 0; i < cotizado.length; i++) {
+            if (cotizado[i] != null) {
+                if (cotizado[i].getDpi().equalsIgnoreCase(dpi)) {
+                    return cotizado[i].getPosibleDeducible();
+                }
+            }else{
+                break;
+            }
+        }
+        return null;
+    }
     
     
     public double PTR(double porsMarca, double porsLinea,double porsUso){
@@ -108,5 +132,6 @@ public class ControladorDatosdeCotizacion {
         masdedu = (pri - 0.03);
         return masdedu;
     }
+    
     
 }

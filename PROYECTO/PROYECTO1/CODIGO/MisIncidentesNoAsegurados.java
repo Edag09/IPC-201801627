@@ -5,6 +5,8 @@
  */
 package Org.EduardoAgustin.Ventanas;
 
+import Org.EduardoAgustin.Clases.ControlNoAsegurados;
+
 /**
  *
  * @author Eduardo Agustin
@@ -12,14 +14,22 @@ package Org.EduardoAgustin.Ventanas;
 public class MisIncidentesNoAsegurados extends javax.swing.JFrame {
 
     String dpi;
-    public MisIncidentesNoAsegurados() {
+    public MisIncidentesNoAsegurados(String dpi) {
         initComponents();
         this.setTitle("Incidentes --- No Asegurados");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.dpi = dpi;
+         mostrarDatos();
     }
-
+    
+    ControlNoAsegurados noAsegurado = new ControlNoAsegurados();
+    
+    public void mostrarDatos(){
+        String cadenaText="Nombre: "+noAsegurado.RetornarNombre(this.dpi)+"\nTelefono: "+noAsegurado.RetornarTelefono(this.dpi)+"\nDPI: "+noAsegurado.RetornarDPI(this.dpi)+"\nTipo: No Asegurado";
+        DatosnoAsegurados.setText(cadenaText);
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -107,45 +117,12 @@ public class MisIncidentesNoAsegurados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      UsuarionoAsegurado una = new UsuarionoAsegurado(dpi);
+      UsuarionoAsegurado una = new UsuarionoAsegurado(this.dpi);
       una.setVisible(true);
       MisIncidentesNoAsegurados.this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MisIncidentesNoAsegurados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MisIncidentesNoAsegurados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MisIncidentesNoAsegurados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MisIncidentesNoAsegurados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MisIncidentesNoAsegurados().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea DatosnoAsegurados;

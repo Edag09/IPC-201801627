@@ -32,8 +32,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="Detalles" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="MostrarDatos" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="Pagar" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -43,7 +41,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" pref="450" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -63,7 +61,6 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Detalles" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="MostrarDatos" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Pagar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -122,14 +119,6 @@
           <Font name="Yu Gothic UI Light" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Pagar"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="MostrarDatos">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Yu Gothic UI Light" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Mostrar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">

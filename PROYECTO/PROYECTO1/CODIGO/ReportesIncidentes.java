@@ -5,8 +5,10 @@
  */
 package Org.EduardoAgustin.Ventanas;
 
+import Org.EduardoAgustin.Clases.ControlNoAsegurados;
 import Org.EduardoAgustin.Clases.ControladorCarga;
 import Org.EduardoAgustin.Clases.ControladorIncidentes;
+import Org.EduardoAgustin.Clases.ControladorPersonas;
 import com.sun.xml.internal.bind.v2.runtime.JAXBContextImpl;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
@@ -29,21 +31,26 @@ public class ReportesIncidentes extends javax.swing.JFrame {
         this.setResizable(false);
         cargas.datosMecanica(ListaServicios, "mecanica");
         cargas.datosRepuestos(ListaRepuestos, "repuesto");
-        Datos();
+        
         
     }
     ControladorCarga cargas = new ControladorCarga();
     ControladorIncidentes incidente = new ControladorIncidentes();
+    ControladorPersonas persona = new ControladorPersonas();
+    ControlNoAsegurados personaNo = new ControlNoAsegurados();
     double precioServicio,precioRepuesto,total;
     DecimalFormat df = new DecimalFormat("#.00");
+    int contador;
     
     public void Datos(){
         try {
             if (cargas.nombreServicio(ListaServicios.getSelectedItem().toString()) == ListaServicios.getSelectedItem().toString()) {
                 if (cargas.nombreRepuesto(ListaRepuestos.getSelectedItem().toString())== ListaRepuestos.getSelectedItem().toString()) {
                     precioServicio = cargas.costoServicio(ListaServicios.getSelectedItem().toString());
+                    
                     precioRepuesto = cargas.precioRepuesto(ListaRepuestos.getSelectedItem().toString());
-                    total = (precioServicio+precioRepuesto);
+                    
+                    incidente.Total(precioServicio, precioRepuesto);
                 }
             }
         } catch (Exception e) {
@@ -53,22 +60,25 @@ public class ReportesIncidentes extends javax.swing.JFrame {
     }
     
     public void LlenarTabla(){
-    String Columnas[]={"Codigo","Servicio","Repuesto","Total"};
+        contador =0;
+    String Columnas[]={"ID","Servicio","Repuesto","Total"};
     String Datos[][] = new String[ControladorIncidentes.cont][4];
-    
         try {
             for (int fila = 0; fila < Datos.length; fila++) {
-                if (Datos[fila][0] != null) {
-                    Datos[fila][0] = ControladorIncidentes.incidentes[fila].getId()+"";
+                if (Datos[fila][0] == null) {
+                    
+                    Datos[fila][0] = contador+"";
                     Datos[fila][1] = ControladorIncidentes.incidentes[fila].getServicio();
                     Datos[fila][2] = ControladorIncidentes.incidentes[fila].getRepuesto();
                     Datos[fila][3] = ControladorIncidentes.incidentes[fila].getTotal();
+                    contador++;
                 }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Trono");
         }
         TablaIncidentesReportes.setModel(new DefaultTableModel(Datos,Columnas));
+        
     }
     
     
@@ -146,6 +156,11 @@ public class ReportesIncidentes extends javax.swing.JFrame {
 
         ReporteIncident.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         ReporteIncident.setText("Reportar Incidente");
+        ReporteIncident.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReporteIncidentActionPerformed(evt);
+            }
+        });
 
         Salir.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Proyecto/Regreso.png"))); // NOI18N
@@ -250,21 +265,48 @@ public class ReportesIncidentes extends javax.swing.JFrame {
     }//GEN-LAST:event_SalirActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-       try {
-            if (ListaServicios.getSelectedItem().equals("Elige una Opcion")|| ListaRepuestos.getSelectedItem().equals("Elige una Opcion")) {
-                JOptionPane.showMessageDialog(null, "Ingresa los datos requeridos");
+        Datos();
+        try {
+            if (ListaServicios.getSelectedItem().equals("Elige una Opcion") || ListaRepuestos.getSelectedItem().equals("Elige una Opcion")) {
+                JOptionPane.showMessageDialog(null, "Selecciona los Itemns");
             }else{
-            String servicio = ListaServicios.getSelectedItem().toString();
-            String repuesto = ListaRepuestos.getSelectedItem().toString();
-            String tot = String.valueOf(total = (precioServicio+precioRepuesto));
-            incidente.agregarIncidente(ControladorIncidentes.cont, servicio, repuesto, tot);
-            incidente.mostrar();
-            LlenarTabla();
+                String servicio = ListaServicios.getSelectedItem().toString();
+                String repuesto = ListaRepuestos.getSelectedItem().toString();
+                String tot = String.valueOf(incidente.Total(precioServicio, precioRepuesto));
+                incidente.agregarIncidente(servicio, repuesto, tot);
+                txtTotal.setText(tot);
+                System.out.println(AseguradoCulpable.getSelectedIcon());;
+                LlenarTabla();
+            }
+        } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Laca");
+        }
+        
+    }//GEN-LAST:event_AddActionPerformed
+
+    private void ReporteIncidentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteIncidentActionPerformed
+        try {
+            if (txtDpiAsegurado.getText().isEmpty() || txtDpiTercero.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Llenar los campos requeridos");
+            }else if(persona.ValidacionDPI(txtDpiAsegurado.getText())){
+                    if (personaNo.ValidacionDPI(txtDpiTercero.getText())) {
+                        JOptionPane.showMessageDialog(null, "Datos Guardados");
+                        txtDpiAsegurado.setText("");
+                        txtDpiTercero.setText("");
+                        txtTotal.setText("");
+                        ListaRepuestos.setSelectedIndex(0);
+                        ListaServicios.setSelectedIndex(0);
+                        AseguradoCulpable.setSelected(false);
+                        TerceroSeguro.setSelected(false);
+                }else{
+                    JOptionPane.showMessageDialog(null, "El tercero aun no esta registrado");
+                    IngresoNoAsegurados no = new IngresoNoAsegurados();
+                    no.setVisible(true);
+                    }
             }
         } catch (Exception e) {
         }
-       
-    }//GEN-LAST:event_AddActionPerformed
+    }//GEN-LAST:event_ReporteIncidentActionPerformed
 
     /**
      * @param args the command line arguments

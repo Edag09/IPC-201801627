@@ -5,6 +5,7 @@
  */
 package Org.EduardoAgustin.Ventanas;
 
+import Org.EduardoAgustin.Clases.ControlNoAsegurados;
 import Org.EduardoAgustin.Clases.ControladorPersonas;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ public class Log extends javax.swing.JFrame {
         
     }
     ControladorPersonas personita = new ControladorPersonas();
+    ControlNoAsegurados noAsegurado = new ControlNoAsegurados();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -123,7 +125,7 @@ public class Log extends javax.swing.JFrame {
                 UsuarioAsegurado ua = new UsuarioAsegurado(txtUsuario.getText());
                 ua.setVisible(true);
                 Log.this.setVisible(false);
-        }else if(!txtUsuario.getText().equalsIgnoreCase("ADMIN")){
+        }else if(noAsegurado.ValidacionDPI(txtUsuario.getText())){
             UsuarionoAsegurado una = new UsuarionoAsegurado(txtUsuario.getText());
             una.setVisible(true);
             Log.this.setVisible(false);

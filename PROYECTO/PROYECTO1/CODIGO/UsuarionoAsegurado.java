@@ -1,5 +1,7 @@
 package Org.EduardoAgustin.Ventanas;
 
+import Org.EduardoAgustin.Clases.ControlNoAsegurados;
+
 
 public class UsuarionoAsegurado extends javax.swing.JFrame {
     String dpi;
@@ -10,8 +12,14 @@ public class UsuarionoAsegurado extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.dpi = dpi;
+        mostrarDatos();
     }
-
+    ControlNoAsegurados noAsegurado = new ControlNoAsegurados();
+    
+    public void mostrarDatos(){
+        String cadenaText="Nombre: "+noAsegurado.RetornarNombre(this.dpi)+"\nTelefono: "+noAsegurado.RetornarTelefono(this.dpi)+"\nDPI: "+noAsegurado.RetornarDPI(this.dpi)+"\nTipo: No Asegurado";
+        DatosUsuarioNoAsegurado.setText(cadenaText);
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -104,13 +112,13 @@ public class UsuarionoAsegurado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MisPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MisPagosActionPerformed
-        PagosNoAsegurados pna = new PagosNoAsegurados();
+        PagosNoAsegurados pna = new PagosNoAsegurados(this.dpi);
         pna.setVisible(true);
         UsuarionoAsegurado.this.dispose();
     }//GEN-LAST:event_MisPagosActionPerformed
 
     private void MisIncidentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MisIncidentesActionPerformed
-      MisIncidentesNoAsegurados ina = new MisIncidentesNoAsegurados();
+      MisIncidentesNoAsegurados ina = new MisIncidentesNoAsegurados(this.dpi);
       ina.setVisible(true);
       UsuarionoAsegurado.this.dispose();
     }//GEN-LAST:event_MisIncidentesActionPerformed

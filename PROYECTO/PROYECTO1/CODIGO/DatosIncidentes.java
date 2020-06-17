@@ -1,34 +1,16 @@
 package Org.EduardoAgustin.Clases;
 
 public class DatosIncidentes {
-    private int id;
     private String servicio;
     private String repuesto;
     private String total;
 
-    public DatosIncidentes(int id, String servicio, String repuesto, String total) {
-        this.id = id;
+    public DatosIncidentes(String servicio, String repuesto, String total) {
         this.servicio = servicio;
         this.repuesto = repuesto;
         this.total = total;
     }
         
-    
-
-    /**
-     * @return the id
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
     /**
      * @return the servicio
      */

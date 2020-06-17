@@ -80,6 +80,7 @@ public class ControladorPersonas {
         return null;
     }
     
+    
     public String MostrarDPI(String dpi){ 
         for (int i = 0; i < persona.length; i++) {
             if (persona[i] != null) {

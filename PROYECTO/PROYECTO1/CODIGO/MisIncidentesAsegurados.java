@@ -5,8 +5,10 @@
  */
 package Org.EduardoAgustin.Ventanas;
 
+import Org.EduardoAgustin.Clases.ControladorDatosdeCotizacion;
 import Org.EduardoAgustin.Clases.ControladorPersonas;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,12 +25,15 @@ public class MisIncidentesAsegurados extends javax.swing.JFrame {
         this.setResizable(false);
         this.dpi = dpi;
         mostrarDatos();
+       
     }
     ControladorPersonas personalogeada = new ControladorPersonas();
     public void mostrarDatos(){
         String cadenaText="Nombre: "+personalogeada.RetornarNombre(this.dpi)+"\nTelefono: "+personalogeada.RetornarTelefono(this.dpi)+"\nDPI: "+personalogeada.RetornarDPI(this.dpi)+"\nTipo: Asegurado";
         DatosAsegurados.setText(cadenaText);
     }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -39,7 +44,6 @@ public class MisIncidentesAsegurados extends javax.swing.JFrame {
         TablaIncidentesAsegurados = new javax.swing.JTable();
         Detalles = new javax.swing.JButton();
         Pagar = new javax.swing.JButton();
-        MostrarDatos = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,9 +72,6 @@ public class MisIncidentesAsegurados extends javax.swing.JFrame {
         Pagar.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
         Pagar.setText("Pagar");
 
-        MostrarDatos.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 12)); // NOI18N
-        MostrarDatos.setText("Mostrar");
-
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Proyecto/Regreso.png"))); // NOI18N
         jButton4.setText("Regreso");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -92,14 +93,12 @@ public class MisIncidentesAsegurados extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Detalles)
-                                .addGap(27, 27, 27)
-                                .addComponent(MostrarDatos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Pagar))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButton4))))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -115,7 +114,6 @@ public class MisIncidentesAsegurados extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Detalles)
-                            .addComponent(MostrarDatos)
                             .addComponent(Pagar))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -136,7 +134,6 @@ public class MisIncidentesAsegurados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea DatosAsegurados;
     private javax.swing.JButton Detalles;
-    private javax.swing.JButton MostrarDatos;
     private javax.swing.JButton Pagar;
     private javax.swing.JTable TablaIncidentesAsegurados;
     private javax.swing.JButton jButton4;

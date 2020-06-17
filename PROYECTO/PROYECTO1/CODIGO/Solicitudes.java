@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Org.EduardoAgustin.Ventanas;
 
 import Org.EduardoAgustin.Clases.ControladorDatosdeCotizacion;
@@ -10,15 +5,9 @@ import Org.EduardoAgustin.Clases.ControladorPersonas;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Eduardo Agustin
- */
+
 public class Solicitudes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Solicitudes
-     */
     public Solicitudes() {
         initComponents();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -27,7 +16,6 @@ public class Solicitudes extends javax.swing.JFrame {
         this.setResizable(false);
         LlenarTabla();
     }
-    int i;
     ControladorPersonas persona = new ControladorPersonas();
     
     public void LlenarTabla(){
@@ -36,6 +24,7 @@ public class Solicitudes extends javax.swing.JFrame {
         try {
             for (int fila = 0; fila < Datos.length; fila++) {
                 if (Datos[fila][0] == null) {
+                    
                     String datos = ControladorPersonas.persona[fila].getTipoVehiculo()+","+ControladorPersonas.persona[fila].getModelo()+","+ControladorPersonas.persona[fila].getMarca()+","+ControladorPersonas.persona[fila].getLinea();
                     Datos[fila][0] = ControladorPersonas.persona[fila].getDpi();
                     Datos[fila][1] = ControladorPersonas.persona[fila].getNombre();
@@ -80,6 +69,11 @@ public class Solicitudes extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Proyecto/like.png"))); // NOI18N
         jButton1.setText(" Aprobar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos Proyecto/forbidden.png"))); // NOI18N
         jButton2.setText(" Rechazar");
@@ -130,40 +124,9 @@ public class Solicitudes extends javax.swing.JFrame {
        Solicitudes.this.dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Solicitudes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Solicitudes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Solicitudes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Solicitudes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Solicitudes().setVisible(true);
-            }
-        });
-    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir;

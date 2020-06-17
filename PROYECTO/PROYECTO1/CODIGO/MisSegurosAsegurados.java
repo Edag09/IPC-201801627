@@ -9,6 +9,8 @@ import Org.EduardoAgustin.Clases.ControladorDatosdeCotizacion;
 import Org.EduardoAgustin.Clases.ControladorPersonas;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class MisSegurosAsegurados extends javax.swing.JFrame {
 
@@ -24,14 +26,40 @@ public class MisSegurosAsegurados extends javax.swing.JFrame {
         SimpleDateFormat formato = new SimpleDateFormat("dd-MMM-YYYY");
         Fecha.setText(formato.format(fecha));
         mostrarDatos();
+        LlenarTabla();
     }
     ControladorPersonas personalogeada = new ControladorPersonas();
     ControladorDatosdeCotizacion datos = new ControladorDatosdeCotizacion();
-
+    int cont;
     public void mostrarDatos(){
         String cadenaText="Nombre: "+personalogeada.RetornarNombre(this.dpi)+"\nTelefono: "+personalogeada.RetornarTelefono(this.dpi)+"\nDPI: "+personalogeada.RetornarDPI(this.dpi)+"\nTipo: Asegurado";
         DatosAsegurados.setText(cadenaText);
+        txtprima.setText(datos.PosiblePrima(this.dpi));
+        txtdeducible.setText(datos.PosibleDeducible(this.dpi));
+        txtMonto.setText(datos.ValorReal(this.dpi));
+        txtestado.setText("Protegido");
     }
+    
+    public void LlenarTabla(){
+        cont =0;
+    String Columnas[]={"ID","Tipo","Total","Fecha Inicio","Fecha Final"};
+        String Datos[][]= new String[ControladorPersonas.cont][5];
+        try {
+            for (int fila = 0; fila < Datos.length; fila++) {
+                if (Datos[fila][0] == null) {
+                    Datos[fila][0] = cont+"";
+                    Datos[fila][1] = "Poliza";
+                    Datos[fila][2] = ControladorDatosdeCotizacion.cotizado[fila].getPosibleCostoPrima()+"";
+                    Datos[fila][3] = "Fecha Inicio";}
+                    Datos[fila][4] = "Fecha Final";
+                cont++;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Trono");
+        }
+        TablaMisSeguros.setModel(new DefaultTableModel(Datos,Columnas));
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
