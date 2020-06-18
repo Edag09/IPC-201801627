@@ -32,7 +32,7 @@ _El segundo método que es el que nos retorna el nombre de esa persona asociado 
 
 ![Validaciones](IMAGENES/Validaciones.jpg)
 
-### Método Para CargarDatos
+### Método Para Cargar Datos
 
 _Se realiza un Split para poder separar las cadenas de datos que nos brindan para poder llenar las clases necesarias y componenetes de los formularios, se separan y se guardan respectivamente en su clase_
 
@@ -55,6 +55,6 @@ _Como podemos ver esta tabla es para el tipo de Persona Asegurada por lo tanto l
 ![MetodosMostrarTablasCarga2](IMAGENES/MostrarTablas.jpg)
 
 
-## Resolición del Problema
+## Resolución del Problema
 
 _Se analizo despues de una lectura al encunciado las necesidades que iban a tener los usuarios que adquirieran los seguros y los que iban a ser ingresados como no asegurados, En primera se tenía que tener en cuenta que los usuarios iban a solicitar el seguro por medio de un formulario el cual se iba a llenar de manera automatica en la parte de los calculos, los cuales se fueron obteniendo despues de la carga masiva ya que por cada tipo, marca, uso, linea y modelo se iba a tener cierto porcentaje de poliza y depreciación por lo tanto se utilizaron estos valores para poder calcular la prima, el deducible y los pisbles deducibles y primas que el usuario queria obtener, segundo los administradores podrian reportar los incidentes que se tenían entonces se hizo una interfaz gráfica en donde se relacionaba el autor y el dañado el cual podria estar asegura o no entonces por medio de unos CheckBox se pudo induir quien era el resposable del incidente y a la hora de reportar el incidente se se iba a agregar al perfil de la persona culpable para pagar, Tercero para las personas que no eran aseguradas a la hora de reportar los incidentes se les crea el usuario de no asegurado y se muestra una tabla donde detalla todo, por ultimo se hicieron reportes de las personas quienes estucieron mayormente incolucradas en mas incidentes y quienes pagaron la mayor poliza_
