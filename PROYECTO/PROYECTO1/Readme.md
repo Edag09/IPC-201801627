@@ -12,9 +12,10 @@ Tipo de Sistema: 64bit.
 ## Clases Utilizadas
 _Para el desarrollo de esta aplicación se utilizaron varias clases para poder ir almacenando los datos reueridos a continuacnión en el diagrama se vera como se relaciona las clases para poder manupular la información_
 
-![DiagramaClase1](IMAGENES/DiagramaClase1.jpg)
+![DiagramaClase1](https://user-images.githubusercontent.com/66287100/84977454-9d3a5080-b0e7-11ea-89da-993a75f59d8e.JPG)
 
-![DiagramaClase2](IMAGENES/DiagramaClase2.jpg)
+![DiagramaClase2](https://user-images.githubusercontent.com/66287100/84977456-9dd2e700-b0e7-11ea-807c-d883352aa049.JPG)
+
 
 ## Metodos Utilizados
 
@@ -22,7 +23,8 @@ _Para el desarrollo de esta aplicación se utilizaron varias clases para poder i
 ### Método de Agregar
 _Este metodo se utiliza para ir ingresando ya sea una persona aseugrada, un no asegurado, un incidente, etc. Este método ayuda a la incersión de los datos_
 
-![AgregarPersonaAsegurada](IMAGENES/AgregarPersonaAsegurada.jpg)
+![AgregarPersonaAsegurada](https://user-images.githubusercontent.com/66287100/84977503-b9d68880-b0e7-11ea-88ed-24491ea94110.JPG)
+
 
 ### Método Validación y Retorno
 
@@ -30,29 +32,29 @@ _En el primer metodo hacemos una validación del dato para saber si se encuenta 
 
 _El segundo método que es el que nos retorna el nombre de esa persona asociado con ese dato, esto se puede hacer para cualquier tipo de dato y puede retornar tambien cualquier dato de esa persona_
 
-![Validaciones](IMAGENES/Validaciones.jpg)
+![Validaciones](https://user-images.githubusercontent.com/66287100/84977524-c5c24a80-b0e7-11ea-8938-6527fdce2eb5.JPG)
 
 ### Método Para Cargar Datos
 
 _Se realiza un Split para poder separar las cadenas de datos que nos brindan para poder llenar las clases necesarias y componenetes de los formularios, se separan y se guardan respectivamente en su clase_
 
-![CargarDatos](IMAGENES/CargarDatos.jpg)
+![CargarDatos](https://user-images.githubusercontent.com/66287100/84977569-dd99ce80-b0e7-11ea-99cf-6825dab5ad4a.JPG)
 
 ### Métodos para ingresar datos de Carga Masiva
 
 _Estos son los metodos implementados para los datos de la sobrecarga ya que estos van a ir variando ya que los datos entran de forma de cadena y se pueden separa en enteros o decimales o en este caso porcentajes_
 
-![MetodosCarga](IMAGENES/MetodosCarga.jpg)
+![MetodosCarga](https://user-images.githubusercontent.com/66287100/84977585-ebe7ea80-b0e7-11ea-91d4-b75cf292ab62.JPG)
 
 _En el metodo datoTipo lo que se hace es que se extrae el tipo ingresado y como se ve que recibe de parametro un JComboBox y una palabra la cual sera la misma que en la carga masiva esto es para poder cargarlos en los ComboBox del formulario, también en los siguientes se va extrayendo los datos necesarios de cada utilidad_
 
-![MetodosCarga2](IMAGENES/MetodosCarga2.jpg)
+![MetodosCarga2](https://user-images.githubusercontent.com/66287100/84977599-f73b1600-b0e7-11ea-9345-565643e52988.JPG)
 
 ### Método Mostrar Tablas
 
 _Como podemos ver esta tabla es para el tipo de Persona Asegurada por lo tanto los datos que se visualizaran en esta son los de tal persona, por lo tanto esto se puede utilizar para cualquier tipo de clase solo que se tiene que especificar que tipos de datos se desea que visualice el usuario_
 
-![MetodosMostrarTablasCarga2](IMAGENES/MostrarTablas.jpg)
+![MostrarTablas](https://user-images.githubusercontent.com/66287100/84977615-015d1480-b0e8-11ea-9c56-5ed26a2d8c1e.JPG)
 
 
 ## Resolución del Problema
