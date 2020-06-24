@@ -175,13 +175,13 @@ public final class Galaga extends javax.swing.JFrame {
 
         
         //Pintar Nave
-        nave = new ColocarNave(nav, bala,lienzo, 0);
+        nave = new ColocarNave(nav, bala,lienzo, 0,cometa);
         nav = new JLabel();
         nav.setBounds(0, 500, 85, 85);
         incertar.Imagenes(nav, "C:\\Users\\Eduardo Agustin\\Documents\\NetBeansProjects\\Galaga\\src\\Imagenes Galaga\\space-invaders.png");
         lienzo.add(nav);
         nave.setNave(nav);
-                
+        nave.setCometa(cometa);
         nave.start();
         
         juego = new Acciones();

@@ -64,6 +64,11 @@ public class Menu extends javax.swing.JFrame {
 
         Acercadealgo.setFont(new java.awt.Font("Yu Gothic UI Light", 1, 18)); // NOI18N
         Acercadealgo.setText("Acerca de...");
+        Acercadealgo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AcercadealgoActionPerformed(evt);
+            }
+        });
         getContentPane().add(Acercadealgo);
         Acercadealgo.setBounds(100, 320, 300, 33);
 
@@ -93,6 +98,11 @@ public class Menu extends javax.swing.JFrame {
        gal.setVisible(true);
        Menu.this.setVisible(false);
     }//GEN-LAST:event_IniciarActionPerformed
+
+    private void AcercadealgoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcercadealgoActionPerformed
+        DatosDesarollador dato = new DatosDesarollador();
+        dato.setVisible(true);
+    }//GEN-LAST:event_AcercadealgoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
