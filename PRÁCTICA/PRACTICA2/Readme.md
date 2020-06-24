@@ -11,49 +11,51 @@ Tipo de Sistema: 64bit.
 ### Clases Utilizadas
 _Para esta aplicacion solicitamos el uso de hilos(Thread) esto ya que se iban a ejecutar mas de un solo proceso por lo tanto en el diagrama de clases verremos su solicion_
 
-![DiagramaClases](//IMAGENES//DiagramaClases.jpg)
+![DiagramaClases](https://user-images.githubusercontent.com/66287100/85490139-7a4be880-b58e-11ea-85a1-b684e1157c79.JPG)
+
 
 ## Métodos Utilizados
 
 ### Contructor Imagenes
 _Este metodo lo utilizamos para popder mostrar las imagenes en nuestro panel_
 
-![ConstructordeImagenes](//IMAGENES//ConstructordeImagenes.jpg)
+![ConstructordeImagenes](https://user-images.githubusercontent.com/66287100/85490188-918ad600-b58e-11ea-8a67-1e1d619d15fb.JPG)
+
 
 ### Repeticion de Imagenes
 _Este metodo lo utilizamos para popder repetir ciertas veces para simular que caen varios a la vez_
 
-![RepeticiondeImagenes](//IMAGENES//RepeticiondeImagenes.jpg)
+![RepeticiondeImagenes](https://user-images.githubusercontent.com/66287100/85490231-9f405b80-b58e-11ea-885f-bd0b8ec5f4bc.JPG)
 
 
 ### Declaracion de Etiquetas
 _Este metodo lo utilizamos para popder crear todas las etiquetas que utilizamos para poder incertar las imagenes_
 
-![DeclaracionLabels](//IMAGENES//DeclaracionLabels.jpg)
+![DeclaracionLabels](https://user-images.githubusercontent.com/66287100/85490264-af583b00-b58e-11ea-8f1b-37035b54041d.JPG)
 
 
 ### Mover Imagenes
 _Este metodo lo utilizamos para popder hacer la simulacion de movimientos para las imagenes que van cayendo_
 
-![HiloObjetos](//IMAGENES//HiloObjetos.jpg)
+![HiloObjetos](https://user-images.githubusercontent.com/66287100/85490300-c0a14780-b58e-11ea-9636-6a0ec9803434.JPG)
 
 
 ### Mover Nave y Disparar
 _Este metodo lo utilizamos para popder hacer la simulacion de que la nave se esta moviendo hacia los lados y disparar_
 
-![MoverNave y Disparar](//IMAGENES//MoverNaveyDisparar.jpg)
+![MoverNave y Disparar](https://user-images.githubusercontent.com/66287100/85490341-cf87fa00-b58e-11ea-8fa0-1cae20957d24.JPG)
 
 
 ### Teclas para mover
 _Este esta dentro del panel para poder llamar el ActionEvent y KeyEvent_
 
-![Presion](//IMAGENES//Presion.jpg)
+![Presion](https://user-images.githubusercontent.com/66287100/85490376-dca4e900-b58e-11ea-8279-1c6725b00c4c.JPG)
 
 
 ### Timer
 _Dentro de este se hizo un cronometro que va hacia atras_
 
-![Timer](//IMAGENES//Timer.jpg)
+![Timer](https://user-images.githubusercontent.com/66287100/85490402-e9c1d800-b58e-11ea-8a3c-a3e3eb49a6eb.JPG)
 
 
 ## Resolución de Problema
