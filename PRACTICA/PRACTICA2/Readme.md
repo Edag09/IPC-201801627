@@ -1,4 +1,4 @@
-# Practica 2: Galaga
+# Practica 2: Galaga: Batalla Espacial
 
 ### Requerimientos para la Aplicación.
 ```
