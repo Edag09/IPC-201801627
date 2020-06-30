@@ -2,7 +2,11 @@ package Ventanas;
 
 import Clases.Boton;
 import Clases.MovimientoHilo;
+import Cola.Cola;
+import ListaCircular.ListaCircularDoble;
+import ListaDoble.ListaDoble;
 import ListaSimple.ListaSimple;
+import Pila.Pila;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -22,6 +26,10 @@ public class Tablero extends JFrame {
     MovimientoHilo mov;
     Boton btn;
     ListaSimple lista = new ListaSimple();
+    ListaDoble listaD = new ListaDoble();
+    ListaCircularDoble listaCD = new ListaCircularDoble();
+    Pila pila = new Pila();
+    Cola cola = new Cola();
 
     public Tablero() {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -57,6 +65,15 @@ public class Tablero extends JFrame {
         ListaCircular.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
         ListaCircular.setForeground(Color.WHITE);
         ListaCircular.setBackground(Color.BLACK);
+        ActionListener lisCD = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               CircularDobleV cd = new CircularDobleV(listaCD);
+               cd.setVisible(true);
+            }
+        };
+        ListaCircular.addActionListener(lisCD);
         
         
         ListaSimple = new JButton("Lista Simple");
@@ -64,24 +81,61 @@ public class Tablero extends JFrame {
         ListaSimple.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
         ListaSimple.setForeground(Color.WHITE);
         ListaSimple.setBackground(Color.BLACK);
+        ActionListener listaS = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+               ListaSimpleV lis = new ListaSimpleV(lista);
+               lis.setVisible(true);
+            }
+        };
+        ListaSimple.addActionListener(listaS);
         
         ListaDoble = new JButton("Lista Doble");
         ListaDoble.setBounds(360, 70, 130, 30);
         ListaDoble.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
         ListaDoble.setForeground(Color.WHITE);
         ListaDoble.setBackground(Color.BLACK);
+        ActionListener lisD = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ListaDobleV doble = new ListaDobleV(listaD);
+                doble.setVisible(true);
+            }
+        };
+        ListaDoble.addActionListener(lisD);
         
         Pila = new JButton("Pila");
         Pila.setBounds(530, 20, 90, 30);
         Pila.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
         Pila.setForeground(Color.WHITE);
         Pila.setBackground(Color.BLACK);
+        ActionListener pil = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                PilaV pilita = new PilaV(pila);
+                pilita.setVisible(true);
+            }
+        };
+        Pila.addActionListener(pil);
+        
         
         Cola = new JButton("Cola");
         Cola.setBounds(530, 70, 90, 30);
         Cola.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
         Cola.setForeground(Color.WHITE);
         Cola.setBackground(Color.BLACK);
+        ActionListener col = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                ColaV col = new ColaV(cola);
+                col.setVisible(true);
+            }
+        };
+        Cola.addActionListener(col);
         
         panelito = new JPanel();
         panelito.setLayout(null);
@@ -99,7 +153,7 @@ public class Tablero extends JFrame {
         lienzo.add(panelito);
         
         
-        mov = new MovimientoHilo(Jugador1, getPanelito(), 0,lista);
+        mov = new MovimientoHilo(Jugador1, panelito,0,lista,listaD,listaCD,pila,cola);
         Jugador1 = new JButton();
         Jugador1.setBounds(0, 0, 100, 100);
         Jugador1.setBackground(Color.BLACK);

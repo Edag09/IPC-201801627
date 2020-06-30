@@ -1,6 +1,6 @@
 package ListaCircular;
 
-import javafx.scene.paint.Color;
+import java.awt.Color;
 
 public class NodoDobleCircular {
     private int tamanioDC;

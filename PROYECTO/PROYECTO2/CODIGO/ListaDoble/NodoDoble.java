@@ -1,6 +1,6 @@
 package ListaDoble;
 
-import javafx.scene.paint.Color;
+import java.awt.Color;
 
 public class NodoDoble {
     private int tamanio;

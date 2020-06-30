@@ -32,9 +32,9 @@ public class CargaDeDatos extends JFrame {
     BufferedReader br;
     Boton btn = new Boton();
     
+    
     public CargaDeDatos(JPanel panel, ListaSimple lista) {
         this.setTitle("Carga de Datos");
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setBounds(350, 100, 450, 500);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -93,11 +93,13 @@ public class CargaDeDatos extends JFrame {
                             int v = Integer.parseInt(s2[2]);
                             lista.AddSimple((f * 100), (c * 100), v, colores(color));
                             JButton bloque =  btn.CrearBotones((f * 100), (c * 100), v, colores(color));
-                            lista.setBoton(bloque, panel);
+                            lista.getCabeza().setBoton(bloque);
+                            panel.add(bloque);
                             panel.updateUI();
                         }
                         JOptionPane.showMessageDialog(null, "Cargados");
                         carga.setText("");
+                        
                     }
                 } catch (Exception e) {
                 }

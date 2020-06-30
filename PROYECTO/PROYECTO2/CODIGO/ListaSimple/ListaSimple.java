@@ -2,7 +2,6 @@ package ListaSimple;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import javax.swing.*;
 
 public class ListaSimple {
 
@@ -11,7 +10,7 @@ public class ListaSimple {
 
     public ListaSimple() {
         this.cabeza = null;
-        this.tamanio = 0;
+        this.tamanio = 1;
     }
 
     public void AddSimple(int fila, int columna, int valor, Color color) {
@@ -34,7 +33,6 @@ public class ListaSimple {
     public void imprimir() {
         NodoSimple aux = this.getCabeza();
         while (aux != null) {
-            //imprime la informacion del usuario, siempre y cuando no este vacio
             JOptionPane.showMessageDialog(null,
                     "Fila: " + aux.getFila() + "\n "
                     + "Columna: " + aux.getColumna() + "\n"
@@ -44,35 +42,39 @@ public class ListaSimple {
             aux = aux.getSiguiente();
         }
     }
-    
-    public void setBoton(JButton boton,JPanel panel){
-    NodoSimple aux = this.getCabeza();
-    int cont =0;
-        while (aux != null) {        
-            if (aux.getCont() == cont) {
-                aux.setBoton(boton);
-                panel.add(aux.getBoton());
+
+    public String GraphvizSimple() {
+        String valor = "digraph G {\n";
+        NodoSimple aux = cabeza;
+        if (aux.getSiguiente() != null) {
+            while (aux.getSiguiente() != null) {
+                valor = valor + aux.getCont() + "[label =\"" + aux.getValor() + ", Color =" + colores(aux.getColor()) + "\" ]\n" + aux.getCont() + "->" + (aux.getCont() + 1) + "\n";
+                aux = aux.getSiguiente();
             }
-            aux = aux.getSiguiente();
-            cont++;
+            valor = valor+aux.getCont()+ "[label =\"" + aux.getValor() + ", Color =" + colores(aux.getColor()) + "\" ]\n";
         }
+        valor = valor + "}";
+        return valor;
     }
-    
-//  public void quitar(int fila, int columna, JPanel panel){
-//      NodoSimple aux = cabeza;
-//      while (aux != null){          
-//          if (aux.getFila() == fila && aux.getColumna() == columna) {
-//              System.out.println(aux.getValor());
-//              panel.remove(aux.getBoton());
-//              break;
-//          }else{
-//              aux = aux.getSiguiente();
-//          }
-//      }
-//  }  
 
 
+    public String colores(Color color) {
+        NodoSimple aux = cabeza;
+        while (aux != null) {
+            if (color == Color.RED) {
+                return "Rojo";
+            } else if (color == Color.YELLOW) {
+                return "Amarillo";
+            } else if (color == Color.GREEN) {
+                return "Verde";
+            } else if (color == Color.BLUE) {
+                return "Azul";
+            }
+        }
+        return null;
+    }
 
+//  "\""+color+"\
     /**
      * @return the cabeza
      */

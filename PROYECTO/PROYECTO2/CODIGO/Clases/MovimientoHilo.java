@@ -8,7 +8,6 @@ import ListaSimple.NodoSimple;
 import Pila.Pila;
 import java.awt.Color;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class MovimientoHilo extends Thread{
@@ -18,16 +17,20 @@ public class MovimientoHilo extends Thread{
     private int mov;
     ListaSimple listita;
     Boton btn;
-    ListaDoble listaD = new ListaDoble();
-    ListaCircularDoble listaCD = new ListaCircularDoble();
-    Pila pila = new Pila();
-    Cola cola = new Cola();
+    ListaDoble listaD;
+    ListaCircularDoble listaCD;
+    Pila pila;
+    Cola cola;
 
-    public MovimientoHilo(JButton btnJugar, JPanel panel, int mov, ListaSimple lista) {
+    public MovimientoHilo(JButton btnJugar, JPanel panel, int mov, ListaSimple lista, ListaDoble listaD,ListaCircularDoble listaCD, Pila pila,Cola cola) {
         this.jugador1 = btnJugar;
         this.panel = panel;
         this.mov = mov;
         this.listita = lista;
+        this.listaCD = listaCD;
+        this.listaD = listaD;
+        this.pila = pila;
+        this.cola= cola;
     }
 
 
@@ -126,26 +129,37 @@ public class MovimientoHilo extends Thread{
                 
                 if (aux.getColor() == Color.RED && aux.isEstado()) {
                     aux.setEstado(false);
-                    System.out.println("Guardado en lista Circular "+aux.getColor()+" "+aux.isEstado());
+                    int valor = aux.getValor();
+                    Color color = aux.getColor();
+                    System.out.println(valor+" "+color);
+                    listaCD.insertarDC(valor, color);
                     
                 }
                 if (aux.getColor() == Color.BLUE && aux.isEstado()) {
                     aux.setEstado(false);
-                    System.out.println("Guardado en lista Doble "+aux.getColor()+" "+aux.isEstado());
+                    int valor = aux.getValor();
+                    Color color = aux.getColor();
+                    System.out.println(valor+" "+color);
+                    listaD.insertarD(valor, color);
                     
                 }
                 if(aux.getColor() == Color.YELLOW && aux.isEstado()){
                     aux.setEstado(false);
-                    System.out.println("Guardado en Pila "+aux.getColor()+" "+aux.isEstado());
+                    int valor = aux.getValor();
+                    Color color = aux.getColor();
+                    pila.push(valor, color);
                     
                 }
                 if (aux.getColor() == Color.GREEN && aux.isEstado()) {
                     aux.setEstado(false);
-                    System.out.println("Guardado en la Cola "+aux.getColor()+" "+aux.isEstado());
+                    int valor = aux.getValor();
+                    Color color = aux.getColor();
+                    cola.pushC(valor, color);
+                    
                 }
             }
             aux = aux.getSiguiente();
         }
     }
-
+    
 }
