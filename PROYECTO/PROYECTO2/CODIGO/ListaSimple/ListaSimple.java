@@ -79,6 +79,10 @@ public class ListaSimple {
         }
     }
 
+    public void VaciarSimple(){
+        this.setCabeza(null);
+    }
+    
     public String colores(Color color) {
         NodoSimple aux = cabeza;
         while (aux != null) {

@@ -47,21 +47,54 @@ public class ListaCircularDoble {
     public String GraphvizCD(){
     String valor ="digraph G {\n";
          NodoDobleCircular aux = getRaiz();
+         int cont=1;
          if (aux != null) {
             while (aux.getSiguiente() != getRaiz()){
-            valor = valor+aux.getTamanioDC()+"[label =\""+aux.getValorDC()+"\"fillcolor=\"red\",style=filled ]\n";
+            valor = valor+cont+"[label =\""+aux.getValorDC()+"\"fillcolor=\"red\",style=filled ]\n";
             if (aux.getSiguiente() != null) {
-            valor = valor+aux.getTamanioDC()+ "->"+(aux.getTamanioDC()+1)+"\n";
-            valor = valor+(aux.getTamanioDC()+1)+"->"+aux.getTamanioDC()+"\n";
+            valor = valor+cont+ "->"+(cont+1)+"\n";
+            valor = valor+(cont+1)+"->"+cont+"\n";
             }
             aux = aux.getSiguiente();
+            cont++;
         }
-        valor = valor+aux.getTamanioDC()+"[label =\""+aux.getValorDC()+"\"fillcolor=\"red\",style=filled ]\n";
-        valor = valor+(aux.getTamanioDC())+"->"+getRaiz().getTamanioDC()+"\n";
-        valor = valor+getRaiz().getTamanioDC()+"->"+(aux.getTamanioDC())+"\n";
+        valor = valor+(cont)+"[label =\""+aux.getValorDC()+"\"fillcolor=\"red\",style=filled ]\n";
+        valor = valor+(cont)+"->"+1+"\n";
+        valor = valor+1+"->"+(cont)+"\n";
+        
         }
          valor = valor+"}";
         return valor;
+    }
+    
+    public void eliminar(int valor){
+    NodoDobleCircular aux = this.raiz;
+        if (this.raiz.getSiguiente() == raiz) {
+            this.raiz = null;
+        }else{
+            if (aux.getValorDC() == valor) {
+                while (aux.getSiguiente() != this.raiz) {                    
+                    aux = aux.getSiguiente();
+                }
+                aux.setSiguiente(aux.getSiguiente().getSiguiente());
+                this.raiz = this.raiz.getSiguiente();
+                aux.getSiguiente().getSiguiente().setAnterior(aux);
+                
+            }else{
+                while (aux.getSiguiente() != this.raiz) {                    
+                    if (aux.getSiguiente().getValorDC()== valor) {
+                        aux.setSiguiente(aux.getSiguiente().getSiguiente());
+                        aux.getSiguiente().setAnterior(this.getRaiz().getSiguiente());
+                    }else{
+                        aux = aux.getSiguiente();
+                    }
+                }
+            }
+        }
+    }
+    
+    public void VaciarCD(){
+    this.setRaiz(null);
     }
 
     /**

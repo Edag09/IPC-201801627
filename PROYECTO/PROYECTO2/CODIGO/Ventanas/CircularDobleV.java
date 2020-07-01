@@ -63,6 +63,22 @@ public class CircularDobleV extends JFrame{
         eliminar.setFont(new Font("Retrow Mentho", Font.PLAIN, 15));
         eliminar.setForeground(Color.WHITE);
         eliminar.setBackground(Color.BLACK);
+        ActionListener delete = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    int valor = Integer.parseInt(txtVal.getText());
+                    listaCD.eliminar(valor);
+                    GraphSimple.setText(listaCD.GraphvizCD());
+                    JOptionPane.showMessageDialog(null, "Eliminado");
+                    txtVal.setText("");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Por favor ingresa los datos correctos");
+                }
+            }
+        };
+        eliminar.addActionListener(delete);
         
         GraphSimple = new JTextArea();
         GraphSimple.setBounds(50, 90, 225, 375);

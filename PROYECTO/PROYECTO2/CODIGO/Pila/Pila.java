@@ -51,7 +51,11 @@ public class Pila {
        valor = valor+"}";
         return valor;
     }
-
+    
+    public void VaciarPila(){
+    this.setRaiz(null);
+    }
+    
     /**
      * @return the raiz
      */

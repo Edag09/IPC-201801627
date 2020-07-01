@@ -85,7 +85,11 @@ public class ListaDoble {
 
         }
     }
-
+    
+    public void VaciarD(){
+    this.setRaiz(null);
+    }
+    
     /**
      * @return the raiz
      */

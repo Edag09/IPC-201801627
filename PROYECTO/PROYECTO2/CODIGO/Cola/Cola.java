@@ -63,7 +63,11 @@ public class Cola {
         valor = valor+"}";        
         return valor;
     }
-
+    
+    public void VaciarCola(){
+    this.setRaiz(null);
+    }
+    
     /**
      * @return the raiz
      */

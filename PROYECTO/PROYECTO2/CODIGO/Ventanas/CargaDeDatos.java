@@ -31,9 +31,10 @@ public class CargaDeDatos extends JFrame {
     FileReader fr;
     BufferedReader br;
     Boton btn = new Boton();
+    JButton boton;
     
     
-    public CargaDeDatos(JPanel panel, ListaSimple lista) {
+    public CargaDeDatos(JPanel panel, ListaSimple lista,JButton bloquecito) {
         this.setTitle("Carga de Datos");
         this.setBounds(350, 100, 450, 500);
         this.setLocationRelativeTo(null);
@@ -41,6 +42,7 @@ public class CargaDeDatos extends JFrame {
         this.setLayout(null);
         this.panel = panel;
         this.lista = lista;
+        this.boton = bloquecito;
 
         nombre = new JLabel("Cargar Datos", SwingConstants.CENTER);
         nombre.setBounds(100, 30, 120, 25);
@@ -93,7 +95,7 @@ public class CargaDeDatos extends JFrame {
                             int v = Integer.parseInt(s2[2]);
                             lista.AddSimple((f * 100), (c * 100), v, colores(color));
                             JButton bloque =  btn.CrearBotones((f * 100), (c * 100), v, colores(color));
-                            lista.getCabeza().setBoton(bloque);
+                            
                             panel.add(bloque);
                             panel.updateUI();
                         }
@@ -143,6 +145,10 @@ public class CargaDeDatos extends JFrame {
                 break;
         }
         return color;
+    }
+    
+    public void eliminarBloques(JButton bloque){
+        panel.remove(bloque);
     }
 
 }
