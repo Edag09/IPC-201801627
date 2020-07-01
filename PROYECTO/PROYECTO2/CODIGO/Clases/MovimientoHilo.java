@@ -126,14 +126,12 @@ public class MovimientoHilo extends Thread{
         NodoSimple aux = listita.getCabeza();
         while (aux != null) {            
             if (jugador1.getX() == aux.getColumna()&& jugador1.getY()== aux.getFila()) {
-                
                 if (aux.getColor() == Color.RED && aux.isEstado()) {
                     aux.setEstado(false);
                     int valor = aux.getValor();
                     Color color = aux.getColor();
                     System.out.println(valor+" "+color);
                     listaCD.insertarDC(valor, color);
-                    
                 }
                 if (aux.getColor() == Color.BLUE && aux.isEstado()) {
                     aux.setEstado(false);
@@ -141,21 +139,18 @@ public class MovimientoHilo extends Thread{
                     Color color = aux.getColor();
                     System.out.println(valor+" "+color);
                     listaD.insertarD(valor, color);
-                    
                 }
                 if(aux.getColor() == Color.YELLOW && aux.isEstado()){
                     aux.setEstado(false);
                     int valor = aux.getValor();
                     Color color = aux.getColor();
                     pila.push(valor, color);
-                    
                 }
                 if (aux.getColor() == Color.GREEN && aux.isEstado()) {
                     aux.setEstado(false);
                     int valor = aux.getValor();
                     Color color = aux.getColor();
                     cola.pushC(valor, color);
-                    
                 }
             }
             aux = aux.getSiguiente();

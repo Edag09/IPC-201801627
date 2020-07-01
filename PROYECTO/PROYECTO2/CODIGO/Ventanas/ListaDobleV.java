@@ -50,7 +50,6 @@ public class ListaDobleV extends JFrame{
                     GraphSimple.setText(listaD.GraphvizDoble());
                     JOptionPane.showMessageDialog(null, "Agregado");
                     txtVal.setText("");
-                    txtColor.setText("");
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Por favor ingresa los datos correctos");
@@ -64,6 +63,26 @@ public class ListaDobleV extends JFrame{
         eliminar.setFont(new Font("Retrow Mentho", Font.PLAIN, 15));
         eliminar.setForeground(Color.WHITE);
         eliminar.setBackground(Color.BLACK);
+        ActionListener delete = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    if (txtVal.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Completar Campos");
+                    }else{
+                    int valor = Integer.parseInt(txtVal.getText());
+                    listaD.EliminarDoble(valor);
+                    GraphSimple.setText(listaD.GraphvizDoble());
+                    JOptionPane.showMessageDialog(null, "eliminado");
+                    txtVal.setText("");
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Por favor ingresa los datos correctos");
+                }
+            }
+        };
+        eliminar.addActionListener(delete);
         
         GraphSimple = new JTextArea();
         GraphSimple.setBounds(50, 90, 225, 375);

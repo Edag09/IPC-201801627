@@ -74,6 +74,26 @@ public class ListaSimpleV extends JFrame{
         eliminar.setFont(new Font("Retrow Mentho", Font.PLAIN, 15));
         eliminar.setForeground(Color.WHITE);
         eliminar.setBackground(Color.BLACK);
+        ActionListener delete = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    if (txtVal.getText().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Completar Campos");
+                    }else{
+                    int valor = Integer.parseInt(txtVal.getText());
+                    String color = String.valueOf(txtColor.getText());
+                    lista.Eliminar(valor);
+                    GraphSimple.setText(lista.GraphvizSimple());
+                    txtVal.setText("");
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Por favor ingresa los datos correctos");
+                }
+            }
+        };
+        eliminar.addActionListener(delete);
         
         GraphSimple = new JTextArea();
         GraphSimple.setBounds(50, 90, 225, 375);
@@ -94,7 +114,7 @@ public class ListaSimpleV extends JFrame{
     
        public Color colores(String col) {
         Color color = null;
-        switch (col) {
+           switch (col) {
             case "ROJO":
                 color = Color.RED;
                 break;
@@ -107,6 +127,7 @@ public class ListaSimpleV extends JFrame{
             case "VERDE":
                 color = Color.GREEN;
                 break;
+            
         }
         return color;
     }

@@ -45,18 +45,39 @@ public class ListaSimple {
 
     public String GraphvizSimple() {
         String valor = "digraph G {\n";
-        NodoSimple aux = cabeza;
-        if (aux.getSiguiente() != null) {
+        NodoSimple aux = getCabeza();
+        int cont=1;
+        if (aux != null) {
             while (aux.getSiguiente() != null) {
-                valor = valor + aux.getCont() + "[label =\"" + aux.getValor() + ", Color =" + colores(aux.getColor()) + "\" ]\n" + aux.getCont() + "->" + (aux.getCont() + 1) + "\n";
+                valor = valor + cont + "[label =\"" + aux.getValor() + ", Color =" + colores(aux.getColor()) + "\" ]\n" + cont + "->" + (cont + 1) + "\n";
                 aux = aux.getSiguiente();
+                cont++;
             }
-            valor = valor+aux.getCont()+ "[label =\"" + aux.getValor() + ", Color =" + colores(aux.getColor()) + "\" ]\n";
+            valor = valor + cont + "[label =\"" + aux.getValor() + ", Color =" + colores(aux.getColor()) + "\" ]\n";
         }
         valor = valor + "}";
         return valor;
     }
 
+    public void Eliminar(int valor) {
+        NodoSimple aux = getCabeza();
+        if (cabeza == null) {
+            JOptionPane.showMessageDialog(null, "Lista Vacia");
+        } else if (this.getCabeza().getValor() == valor) {
+            this.setCabeza(cabeza.getSiguiente());
+        } else {
+            while (aux.getSiguiente() != null) {
+                if (aux.getSiguiente().getValor() == valor) {
+                    aux.setSiguiente(aux.getSiguiente().getSiguiente());
+                    break;
+                } else if (aux.getSiguiente().getValor() == valor) {
+                    aux.setSiguiente(null);
+                }
+                aux = aux.getSiguiente();
+            }
+
+        }
+    }
 
     public String colores(Color color) {
         NodoSimple aux = cabeza;

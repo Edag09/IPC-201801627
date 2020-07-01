@@ -1,6 +1,7 @@
 package Cola;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class Cola {
 
@@ -36,16 +37,16 @@ public class Cola {
         if (this.getRaiz() != null) {
             aux = this.getRaiz();
             if (this.getRaiz() != null) {
-                System.out.println("Valor: " + aux.getValor() + "\nColor: " + aux.getColor()+"\nID: "+aux.getTamanioC());
                 this.setRaiz(aux.getSiguiente());
             }else {
                 this.setRaiz(null);
             }
             return aux;
         }
-        System.out.println("Se excedio");
+        JOptionPane.showMessageDialog(null,"La Cola esta Vacia");
         return aux;
     }
+    
     
     public String GraphvizCola() {
         String valor = "digraph G {\n";

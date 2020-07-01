@@ -63,6 +63,20 @@ public class PilaV extends JFrame{
         eliminar.setFont(new Font("Retrow Mentho", Font.PLAIN, 15));
         eliminar.setForeground(Color.WHITE);
         eliminar.setBackground(Color.BLACK);
+        ActionListener delete = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    pila.pop();
+                    GraphSimple.setText(pila.GraphvizPila());
+                    JOptionPane.showMessageDialog(null, "Eliminado");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Alguien salio mal");
+                }
+            }
+        };
+        eliminar.addActionListener(delete);
         
         GraphSimple = new JTextArea();
         GraphSimple.setBounds(50, 90, 225, 375);

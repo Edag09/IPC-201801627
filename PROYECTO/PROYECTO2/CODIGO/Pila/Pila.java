@@ -1,6 +1,7 @@
 package Pila;
 
 import java.awt.Color;
+import javax.swing.*;
 
 public class Pila {
 
@@ -30,10 +31,9 @@ public class Pila {
         NodoPila retorno = this.getRaiz();
         if (retorno != null) {
             this.setRaiz(this.getRaiz().getSiguiente());
-            System.out.println("Valor: " + retorno.getValor() + "\nColor: " + retorno.getColor() + "\nID: " + retorno.getTamanioP());
             return retorno;
         } else {
-            System.out.println("La pila esta vacia");
+            JOptionPane.showMessageDialog(null,"La Pila esta Vacia");
         }
         return null;
     }

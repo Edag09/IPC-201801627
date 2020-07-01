@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Tablero extends JFrame {
+
     private JButton CargarDatos, Reiniciar;
     private JButton ListaCircular, ListaSimple, ListaDoble, Pila, Cola, Jugador1;
     private Container lienzo;
@@ -48,18 +49,26 @@ public class Tablero extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                CargaDeDatos cd = new CargaDeDatos(panelito,lista);
+                CargaDeDatos cd = new CargaDeDatos(panelito, lista);
                 cd.setVisible(true);
             }
         };
         CargarDatos.addActionListener(bai);
-        
+
         Reiniciar = new JButton("Reiniciar");
         Reiniciar.setBounds(20, 70, 110, 30);
         Reiniciar.setFont(new Font("Retrow Mentho", Font.PLAIN, 18));
         Reiniciar.setForeground(Color.WHITE);
         Reiniciar.setBackground(Color.BLACK);
-        
+        ActionListener reinicio = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                Jugador1.setBounds(0, 0, 100, 100);
+            }
+        };
+        Reiniciar.addActionListener(reinicio);
+
         ListaCircular = new JButton("Lista Circular");
         ListaCircular.setBounds(200, 45, 130, 30);
         ListaCircular.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
@@ -69,13 +78,12 @@ public class Tablero extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-               CircularDobleV cd = new CircularDobleV(listaCD);
-               cd.setVisible(true);
+                CircularDobleV cd = new CircularDobleV(listaCD);
+                cd.setVisible(true);
             }
         };
         ListaCircular.addActionListener(lisCD);
-        
-        
+
         ListaSimple = new JButton("Lista Simple");
         ListaSimple.setBounds(360, 20, 130, 30);
         ListaSimple.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
@@ -85,12 +93,12 @@ public class Tablero extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-               ListaSimpleV lis = new ListaSimpleV(lista);
-               lis.setVisible(true);
+                ListaSimpleV lis = new ListaSimpleV(lista);
+                lis.setVisible(true);
             }
         };
         ListaSimple.addActionListener(listaS);
-        
+
         ListaDoble = new JButton("Lista Doble");
         ListaDoble.setBounds(360, 70, 130, 30);
         ListaDoble.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
@@ -105,7 +113,7 @@ public class Tablero extends JFrame {
             }
         };
         ListaDoble.addActionListener(lisD);
-        
+
         Pila = new JButton("Pila");
         Pila.setBounds(530, 20, 90, 30);
         Pila.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
@@ -120,8 +128,7 @@ public class Tablero extends JFrame {
             }
         };
         Pila.addActionListener(pil);
-        
-        
+
         Cola = new JButton("Cola");
         Cola.setBounds(530, 70, 90, 30);
         Cola.setFont(new Font("Retrow Mentho", Font.PLAIN, 16));
@@ -136,12 +143,12 @@ public class Tablero extends JFrame {
             }
         };
         Cola.addActionListener(col);
-        
+
         panelito = new JPanel();
         panelito.setLayout(null);
         panelito.setBounds(25, 125, 700, 500);
         panelito.setBackground(Color.WHITE);
-        
+
         lienzo = this.getContentPane();
         lienzo.add(CargarDatos);
         lienzo.add(Reiniciar);
@@ -151,9 +158,8 @@ public class Tablero extends JFrame {
         lienzo.add(Cola);
         lienzo.add(Pila);
         lienzo.add(panelito);
-        
-        
-        mov = new MovimientoHilo(Jugador1, panelito,0,lista,listaD,listaCD,pila,cola);
+
+        mov = new MovimientoHilo(Jugador1, panelito, 0, lista, listaD, listaCD, pila, cola);
         Jugador1 = new JButton();
         Jugador1.setBounds(0, 0, 100, 100);
         Jugador1.setBackground(Color.BLACK);
@@ -163,14 +169,14 @@ public class Tablero extends JFrame {
 
             @Override
             public void keyTyped(KeyEvent ke) {
-            
+
             }
 
             @Override
             public void keyPressed(KeyEvent ke) {
-            switch (ke.getExtendedKeyCode()) {
+                switch (ke.getExtendedKeyCode()) {
                     case KeyEvent.VK_RIGHT:
-                         mov.setMov(1);
+                        mov.setMov(1);
                         break;
                     case KeyEvent.VK_LEFT:
                         mov.setMov(2);
@@ -186,10 +192,10 @@ public class Tablero extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent ke) {
-            
+
             }
         });
-        
+
         mov.start();
 
     }
