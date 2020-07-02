@@ -40,7 +40,7 @@ public class Tablero extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent ae) {
-                CargaDeDatos cd = new CargaDeDatos(panelito, lista, getBloque());
+                CargaDeDatos cd = new CargaDeDatos(panelito, lista, Jugador1);
                 cd.setVisible(true);
             }
         };
@@ -56,14 +56,15 @@ public class Tablero extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    
-                    Jugador1.setBounds(0, 0, 100, 100);
                     lista.VaciarSimple();
                     listaCD.VaciarCD();
                     listaD.VaciarD();
                     cola.VaciarCola();
                     pila.VaciarPila();
-                    
+                    panelito.removeAll();
+                    panelito.add(Jugador1);
+                    Jugador1.setBounds(0, 0, 100, 100);
+                    panelito.updateUI();
                     JOptionPane.showMessageDialog(null, "Reiniciado");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Error");

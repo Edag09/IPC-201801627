@@ -95,10 +95,14 @@ public class CargaDeDatos extends JFrame {
                             int v = Integer.parseInt(s2[2]);
                             lista.AddSimple((f * 100), (c * 100), v, colores(color));
                             panel.add(colocar.CrearBotones((f * 100), (c * 100), v, colores(color)));
-                            panel.repaint();
+                            panel.updateUI();
                         }
                         JOptionPane.showMessageDialog(null, "Cargados");
                         carga.setText("");
+                        panel.removeAll();
+                        panel.add(boton);
+                        boton.setBounds(0, 0, 100, 100);
+                        
                         
                     }
                 } catch (Exception e) {
