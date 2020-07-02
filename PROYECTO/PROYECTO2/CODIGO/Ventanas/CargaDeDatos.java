@@ -1,6 +1,5 @@
 package Ventanas;
 
-import Clases.Boton;
 import ListaSimple.ListaSimple;
 import java.awt.Color;
 import java.awt.Container;
@@ -20,8 +19,8 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 public class CargaDeDatos extends JFrame {
-
-    Tablero colocar;
+    
+    Tablero colocar = new Tablero();
     JLabel nombre;
     JTextArea carga;
     JButton cargar, salir, abrir;
@@ -30,7 +29,6 @@ public class CargaDeDatos extends JFrame {
     ListaSimple lista;
     FileReader fr;
     BufferedReader br;
-    Boton btn = new Boton();
     JButton boton;
     
     
@@ -50,6 +48,8 @@ public class CargaDeDatos extends JFrame {
 
         carga = new JTextArea();
         carga.setBounds(20, 80, 400, 250);
+        carga.setBackground(Color.LIGHT_GRAY);
+        carga.setForeground(Color.BLACK);
 
         abrir = new JButton("Abrir");
         abrir.setBounds(20, 380, 80, 30);
@@ -94,10 +94,8 @@ public class CargaDeDatos extends JFrame {
                             int c = Integer.parseInt(s2[1]);
                             int v = Integer.parseInt(s2[2]);
                             lista.AddSimple((f * 100), (c * 100), v, colores(color));
-                            JButton bloque =  btn.CrearBotones((f * 100), (c * 100), v, colores(color));
-                            
-                            panel.add(bloque);
-                            panel.updateUI();
+                            panel.add(colocar.CrearBotones((f * 100), (c * 100), v, colores(color)));
+                            panel.repaint();
                         }
                         JOptionPane.showMessageDialog(null, "Cargados");
                         carga.setText("");
@@ -147,8 +145,5 @@ public class CargaDeDatos extends JFrame {
         return color;
     }
     
-    public void eliminarBloques(JButton bloque){
-        panel.remove(bloque);
-    }
 
 }

@@ -16,7 +16,6 @@ public class MovimientoHilo extends Thread{
     private JPanel panel;
     private int mov;
     ListaSimple listita;
-    Boton btn;
     ListaDoble listaD;
     ListaCircularDoble listaCD;
     Pila pila;
@@ -126,30 +125,33 @@ public class MovimientoHilo extends Thread{
         NodoSimple aux = listita.getCabeza();
         while (aux != null) {            
             if (jugador1.getX() == aux.getColumna()&& jugador1.getY()== aux.getFila()) {
+                
                 if (aux.getColor() == Color.RED && aux.isEstado()) {
                     aux.setEstado(false);
                     int valor = aux.getValor();
                     Color color = aux.getColor();
-                    System.out.println(valor+" "+color);
+                    System.out.println("Agregado "+aux.getValor());
                     listaCD.insertarDC(valor, color);
                 }
                 if (aux.getColor() == Color.BLUE && aux.isEstado()) {
                     aux.setEstado(false);
                     int valor = aux.getValor();
                     Color color = aux.getColor();
-                    System.out.println(valor+" "+color);
+                    System.out.println("Agregado "+aux.getValor());
                     listaD.insertarD(valor, color);
                 }
                 if(aux.getColor() == Color.YELLOW && aux.isEstado()){
                     aux.setEstado(false);
                     int valor = aux.getValor();
                     Color color = aux.getColor();
+                    System.out.println("Agregado "+aux.getValor());
                     pila.push(valor, color);
                 }
                 if (aux.getColor() == Color.GREEN && aux.isEstado()) {
                     aux.setEstado(false);
                     int valor = aux.getValor();
                     Color color = aux.getColor();
+                    System.out.println("Agregado "+aux.getValor());
                     cola.pushC(valor, color);
                 }
             }

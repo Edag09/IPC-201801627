@@ -41,16 +41,21 @@ public class Pila {
     public String GraphvizPila() {
         String valor = "digraph G {\n";
         NodoPila aux = this.getRaiz();
+        int cont =1;
         if (aux != null) {
             while (aux.getSiguiente() != null){ 
-            valor = valor + aux.getTamanioP()+ "[label =\"" + aux.getValor() + "\"fillcolor=\"yellow\",style=filled ]\n" + aux.getTamanioP() + "->" + (aux.getTamanioP()-1) + "\n";
+            valor = valor +(cont)+ "[label =\"" + aux.getValor() + "\"fillcolor=\"yellow\",style=filled ]\n" + (cont) + "->" + (cont+1) + "\n";
             aux = aux.getSiguiente();
+            cont++;
+            }
+            
+        valor = valor+(cont)+"[label =\"" + aux.getValor() +"\"fillcolor=\"yellow\",style=filled ]\n";
         }
-        valor = valor+aux.getTamanioP()+"[label =\"" + aux.getValor() +"\"fillcolor=\"yellow\",style=filled ]\n";
-        }
-       valor = valor+"}";
+        
+        valor = valor+"}";
         return valor;
     }
+    
     
     public void VaciarPila(){
     this.setRaiz(null);

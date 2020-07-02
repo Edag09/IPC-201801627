@@ -51,14 +51,16 @@ public class Cola {
     public String GraphvizCola() {
         String valor = "digraph G {\n";
         NodoCola aux = getRaiz();
-        int cont=0;
+        int cont=1;
         if (aux != null) {
-            valor = valor+cont+"[label = inicio]\n"+cont+"->"+ aux.getTamanioC() +"\n";
+            valor = valor+cont+"[label = inicio]\n"+cont+"->"+ (cont+1) +"\n";
             while (aux.getSiguiente() != null) {
-                valor = valor + aux.getTamanioC()+ "[label =\"" + aux.getValor() + "\"fillcolor=\"green\",style=filled ]\n" + aux.getTamanioC()+ "->" + (aux.getTamanioC()+ 1) + "\n";
+                valor = valor + (cont+1) + "[label =\"" + aux.getValor() + "\"fillcolor=\"green\",style=filled ]\n" + (cont+1) + "->" +(cont+2) + "\n";
                 aux = aux.getSiguiente();
-        }
-        valor = valor+aux.getTamanioC()+ "[label =\"" + aux.getValor() + "\"fillcolor=\"green\",style=filled ]\n";
+        cont++;
+            }
+        valor = valor+(cont+1)+ "[label =\"" + aux.getValor() + "\"fillcolor=\"green\",style=filled ]\n";
+        
         }
         valor = valor+"}";        
         return valor;
